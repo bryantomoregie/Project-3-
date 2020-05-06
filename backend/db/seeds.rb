@@ -44,4 +44,10 @@ t1 = Task.create({name: 't1', swim_lane_id: s1.id})
 
 ul1 = UserList.create({user_id: u1.id, list_id: l1.id})
 
+# fetch(`http://127.0.0.1:3000/lists/${element.id}`,{
+#     method: 'PATCH',
+#     headers: {'Content-Type': 'application/json'},
+#     body: JSON.stringify ({
+#         name: liTag.value})
 
+# })
