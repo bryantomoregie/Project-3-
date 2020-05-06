@@ -8,13 +8,17 @@ class UsersController < ApplicationController
         user = User.create({
             name: params[:name],
             username: params[:username],
-            password_digest: params[:password],
+            password: params[:password],
             email: params[:email]
         })
         render(json: user)
     end
 
     def show
+        # user = User.find_by(id: session[:user_id])
+        # session[:user_id]
+        # categories = user.categories
+        # render(json: user, include: [:categories])
         user = User.find(params[:id])
         categories = user.categories
         render(json: user, include: [:categories])
@@ -25,7 +29,7 @@ class UsersController < ApplicationController
         user.update({
             name: params[:name],
             username: params[:username],
-            password_digest: params[:password],
+            password: params[:password],
             email: params[:email]
         })
         render(json: user)
