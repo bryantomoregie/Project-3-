@@ -61,60 +61,60 @@ fetch("http://localhost:3000/users")
             fetch(`http://localhost:3000/users/${user.id}`)
             .then((response) => response.json())
             .then(function(user){
-            while (document.body.firstChild) {
-                document.body.removeChild(document.body.lastChild);
-            }
-            let catList = document.createElement("ul")
-            let name = document.createElement("h1")
-            name.append(user.name)
-            user.categories.forEach(function(cat){
-            let catLi = document.createElement("li")
-            catLi.contentEditable = "true"
-            catLi.append(cat.name)
+                while (document.body.firstChild) {
+                    document.body.removeChild(document.body.lastChild);
+                }
+                let catList = document.createElement("ul")
+                let name = document.createElement("h1")
+                name.append(user.name)
+                user.categories.forEach(function(cat){
+                let catLi = document.createElement("li")
+                catLi.contentEditable = "true"
+                catLi.append(cat.name)
 
             
-            let viewCat = document.createElement("button")
-            viewCat.append("View Category")
-            viewCat.addEventListener("click", function(){
-                fetch(`http://localhost:3000/categories/${cat.id}`)
-                .then((response) => response.json())
-                .then(function(result){
-                    console.log(result)
-                    // list view ?
+                let viewCat = document.createElement("button")
+                viewCat.append("View Category")
+                viewCat.addEventListener("click", function(){
+                    fetch(`http://localhost:3000/categories/${cat.id}`)
+                    .then((response) => response.json())
+                    .then(function(result){
+                        console.log(result)
+                        // list view ?
+                    })
                 })
-            })
 
-            let editCat = document.createElement("button")
-            editCat.append("Edit/Save")
-            editCat.addEventListener("click", function(e){
-                e.preventDefault()
-                fetch(`http://localhost:3000/categories/${cat.id}`, {
-                    method: "PATCH",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({
-                        name: catLi.innerText
+                let editCat = document.createElement("button")
+                editCat.append("Edit/Save")
+                editCat.addEventListener("click", function(e){
+                    e.preventDefault()
+                    fetch(`http://localhost:3000/categories/${cat.id}`, {
+                        method: "PATCH",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({
+                            name: catLi.innerText
+                        })
                     })
                 })
-            })
-            let delCat = document.createElement("button")
-            delCat.append("Delete")
-            delCat.addEventListener("click", function(e){
-                e.preventDefault()
-                fetch(`http://localhost:3000/categories/${cat.id}`,{
-                    method: "DELETE",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({
-                        id: cat.id
+                let delCat = document.createElement("button")
+                delCat.append("Delete")
+                delCat.addEventListener("click", function(e){
+                    e.preventDefault()
+                    fetch(`http://localhost:3000/categories/${cat.id}`,{
+                        method: "DELETE",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({
+                            id: cat.id
+                        })
                     })
+                    catLi.remove()
+                    editCat.remove()
+                    delCat.remove()
+                    viewCat.remove()
                 })
-                catLi.remove()
-                editCat.remove()
-                delCat.remove()
-                viewCat.remove()
+                catList.append(catLi,viewCat, editCat, delCat)
             })
-            catList.append(catLi,viewCat, editCat, delCat)
-        })
-        document.body.append(name)
+            document.body.append(name)
 
         let editProfile = document.createElement("button")
         editProfile.append("Edit My Profile")
