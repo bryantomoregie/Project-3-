@@ -1,14 +1,27 @@
+const renderAllLanes = (element) => {
+
+
+
 const ulTag = document.createElement('ul')
 
 fetch('http://127.0.0.1:3000/swim_lanes')
 .then(function(response){
     return response.json()
 })
-.then(function(swimlane){
-    swimlane.forEach(element => {
-        let liTag = document.createElement('li')
-        liTag.append(element.name)
-        liTag.contentEditable = 'true'
+.then(function(swimlanes){
+    console.log(swimlanes)
+    swimlanes = swimlanes.filter(sl => {
+        return sl.list_id == element.id
+    })
+    console.log(swimlanes)
+
+    swimlanes.forEach(element => {
+        let laneDiv = document.createElement('div')
+        laneDiv.className = 'swim-lane'
+
+        let laneH4 = document.createElement('h4')
+        laneH4.innerText = element.name
+        laneH4.contentEditable = 'true'
         
         let editButton = document.createElement('button')
         editButton.append('edit')
@@ -22,7 +35,7 @@ fetch('http://127.0.0.1:3000/swim_lanes')
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify ({
-                    name: liTag.innerText
+                    name: laneH4.innerText
                 })
             })
         })   
@@ -43,8 +56,10 @@ fetch('http://127.0.0.1:3000/swim_lanes')
 
         })
     
-    ulTag.append(liTag, editButton, deleteButton)
-    document.body.append(ulTag)
+    renderEachTask(laneDiv, element.id)
+    laneDiv.append(laneH4, editButton, deleteButton,)
+    
+    document.body.append(laneDiv)
     });  
 
 
@@ -135,3 +150,5 @@ fetch('http://127.0.0.1:3000/swim_lanes')
     
 
 })
+
+}

@@ -4,7 +4,7 @@ class ListsController < ApplicationController
         # category = category_id.find(params[:id])
         # list = category.lists 
         lists = List.all
-        render(json:lists)
+        render(json: lists)
     end 
 
     def new 
