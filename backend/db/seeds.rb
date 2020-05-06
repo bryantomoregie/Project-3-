@@ -6,7 +6,7 @@ UserList.destroy_all
 Task.destroy_all
 
 # Users
-josh = User.create({name: "Joshua Miles", username: "LinkWithABow", password: '123', email: 'linkmiles@noreply.com'})
+josh = User.create({name: "Joshua Miles", username: "j", password: '123', email: 'linkmiles@noreply.com'})
 steven = User.create({name: "Steven Nguyen", username: "LinkWithSheild", password: '123', email: 'stevenshle@noreply.com'})
 
 
@@ -82,8 +82,8 @@ lecturesPresented = SwimLane.create({name: 'Presented', list_id: lectures.id})
 
 # Swim Lanes / Josh < Teaching < Labs
 labsQA = SwimLane.create({name: 'Quality Check', list_id: labs.id})
-lecturesDeploy = SwimLane.create({name: 'Deploy', list_id: labs.id})
-lecturesReview= SwimLane.create({name: 'Review With Class', list_id: labs.id})
+labsDeploy = SwimLane.create({name: 'Deploy', list_id: labs.id})
+labsReview= SwimLane.create({name: 'Review With Class', list_id: labs.id})
 
 # Swim Lanes / Josh < Entertainment < LOTR
 lotrBacklog = SwimLane.create({name: 'Backlog', list_id: lotr.id})
@@ -106,14 +106,6 @@ beard = SwimLane.create({name: 'To Do', list_id: beardHealth.id})
 
 # ------------------------------------------------------------------------------------
 
-
-# Swim Lanes / Josh < Teaching < Lectures Backlog
-lecturesBacklog = SwimLane.create({name: 'Backlog', list_id: lectures.id})
-lecturesThisWeek = SwimLane.create({name: 'This Week', list_id: lectures.id})
-lecturesReview = SwimLane.create({name: 'Review', list_id: lectures.id})
-lecturesPrepare = SwimLane.create({name: 'Prepare', list_id: lectures.id})
-lecturesPresented = SwimLane.create({name: 'Presented', list_id: lectures.id})
-
 l1 = Task.create({name: 'The DOM', swim_lane_id: lecturesBacklog.id})
 l2 = Task.create({name: 'JavaScripts', swim_lane_id: lecturesBacklog.id})
 l3 = Task.create({name: 'DOM Events', swim_lane_id: lecturesBacklog.id})
@@ -124,6 +116,6 @@ l7 = Task.create({name: 'Callback Functions', swim_lane_id: lecturesReview.id})
 l8 = Task.create({name: 'JavaScript Classes', swim_lane_id: lecturesReview.id})
 l9 = Task.create({name: 'Validations', swim_lane_id: lecturesPresented.id})
 l10 = Task.create({name: 'Sessions & Cookies', swim_lane_id: lecturesPresented.id})
-l11 = Task.create({name: 'Rails Forms', swim_lane_id: lecturesPresented.id})
+l11 = Task.create({name: 'Rails Forms', swim_lane_id: lecturesThisWeek.id})
 l12 = Task.create({name: 'Rails Routing', swim_lane_id: lecturesPresented.id})
 l13 = Task.create({name: 'Rails', swim_lane_id: lecturesPresented.id})
