@@ -1,6 +1,5 @@
-const newUserSubmitAction = (modal, modCont) => {
-    modal.style.display = "block";
-    let newUser = document.createElement("form")
+const renderEditProfileForm = () => {
+    let editUserForm = document.createElement("form")
 
     let nameInput = document.createElement("input")
     nameInput.setAttribute('type',"text")
@@ -22,14 +21,14 @@ const newUserSubmitAction = (modal, modCont) => {
     emailInput.setAttribute('email',"email")
     emailInput.placeholder = 'Insert your email'
 
-    let newUserSubmit = document.createElement("input")
-    newUserSubmit.setAttribute('type',"submit")
-    newUserSubmit.setAttribute('value',"Create User")
+    let subForm = document.createElement("input")
+    subForm.setAttribute('type',"submit")
+    subForm.setAttribute('value',"Update User")
 
-    newUserSubmit.addEventListener("click", function(e){
+    subForm.addEventListener("click", function(e){
         e.preventDefault()
-        fetch("http://localhost:3000/users", {
-            method: "POST",
+        fetch(`http://localhost:3000/users/${currentUser.id}`,{
+            method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 name: nameInput.value,
@@ -38,15 +37,13 @@ const newUserSubmitAction = (modal, modCont) => {
                 email: emailInput.value
             })
         })
-        .then((response) => response.json())
-        .then(function(user){
-            currentUser = user
-            renderHome()
-        })
-        nameInput.value = ''
-        usernameInput.value = ''
-        passwordInput.value = ''
-        emailInput.value = ''
+    name.innerText = nameInput.value
+    nameInput.remove()
+    usernameInput.remove()
+    passwordInput.remove()
+    emailInput.remove()
+    subForm.remove()
     })
-    modCont.append(newUser, nameInput, usernameInput, passwordInput, emailInput, newUserSubmit)
+    editUserForm.append(nameInput,usernameInput,passwordInput, emailInput, subForm)
+    document.body.append(editUserForm)
 }
