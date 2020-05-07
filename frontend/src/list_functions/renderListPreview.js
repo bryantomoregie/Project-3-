@@ -14,6 +14,7 @@ const renderListPreview = (list) => {
         while (document.body.firstChild) {
             document.body.removeChild(document.body.lastChild);
         }
+        renderSignOutHeader()
         renderSwimLanes(list)
     })
 

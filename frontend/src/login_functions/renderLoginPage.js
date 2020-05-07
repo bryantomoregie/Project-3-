@@ -1,3 +1,4 @@
+
 let currentUser = {}
 
 const renderLoginPage = () => {

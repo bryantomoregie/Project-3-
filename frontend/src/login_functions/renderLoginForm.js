@@ -53,7 +53,7 @@ const renderLoginForm = () => {
     loginSubmit.append(iconSignIn)
 
     passVisa.addEventListener("click", function(e){
-        passwordVisabilityEvent(e)
+        visabilityEvent(e)
     })
 
     loginSubmit.addEventListener("click", function(e){
@@ -67,69 +67,25 @@ const renderLoginForm = () => {
     iconSignUp.className = "fa fa-user-plus"
     signUpBtn.append(iconSignUp)
 
-    let modal = document.getElementById("myModal");
-    let exitBtn = document.getElementsByClassName("close")[0];
-
-    let modCont = document.querySelector(".modal-content")
-
     signUpBtn.addEventListener("click", function(){
-        modal.style.display = "block";
-        let newUser = document.createElement("form")
+        let modal = document.createElement("div")
+        modal.className = "modal"
+        modal.id = "myModal"
+    
+        let modContent = document.createElement("div")
+        modContent.className = "modal-content"
+        modal.append(modContent)
+    
+        let modalClose = document.createElement('span')
+        modalClose.innerHTML = "&times;"
+        modalClose.className = "close"
+        modContent.append(modalClose)
 
-        let nameInput = document.createElement("input")
-        nameInput.setAttribute('type',"text")
-        nameInput.setAttribute('name',"name")
-        nameInput.placeholder = 'Your Name Here'
-
-        let usernameInput = document.createElement("input")
-        usernameInput.setAttribute('type',"text")
-        usernameInput.setAttribute('username',"username")
-        usernameInput.placeholder = 'Create a username'
-
-        let passwordInput = document.createElement("input")
-        passwordInput.setAttribute('type',"password")
-        passwordInput.setAttribute('password',"password")
-        passwordInput.placeholder = 'Create a password'
-
-        let emailInput = document.createElement("input")
-        emailInput.setAttribute('type',"text")
-        emailInput.setAttribute('email',"email")
-        emailInput.placeholder = 'Insert your email'
-
-        let subForm = document.createElement("input")
-        subForm.setAttribute('type',"submit")
-        subForm.setAttribute('value',"Create User")
-
-        subForm.addEventListener("click", function(e){
-            e.preventDefault()
-            fetch("http://localhost:3000/users", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    name: nameInput.value,
-                    username: usernameInput.value,
-                    password: passwordInput.value,
-                    email: emailInput.value
-                })
-            })
-            .then((response) => response.json())
-            .then(function(user){
-                currentUser = user
-                renderHome()
-            })
-            nameInput.value = ''
-            usernameInput.value = ''
-            passwordInput.value = ''
-            emailInput.value = ''
-        })
-
-        modCont.append(newUser, nameInput, usernameInput, passwordInput, emailInput, subForm)
-    })
-    exitBtn.addEventListener("click", function(){
-        modal.style.display = "none";
+        document.body.append(modal)
+        newUserSubmitAction(modal, modContent)
     })
 
-    window.onclick = function(event) {
+    window.onclick = function(event, modal) {
         if (event.target == modal) {
         modal.style.display = "none";
         }
@@ -138,4 +94,31 @@ const renderLoginForm = () => {
     formDiv.append(signUpBtn)
     document.body.append(formDiv)
     return formDiv
+}
+
+const submitAction = (e, signInUserInput ,signInPasswordInput) => {
+    e.preventDefault()
+
+    console.log(document.location)
+
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            username: signInUserInput.value,
+            password: signInPasswordInput.value,
+        })
+    })
+    .then((response) => response.json())
+    .then(function(user){
+        fetch(`http://localhost:3000/users/${user.id}`)
+        .then((response) => response.json())
+        .then(function(user){
+            currentUser = user
+            renderHome()
+    })
+
+    })
+    signInUserInput.value = ''
+    signInPasswordInput.value = ''
 }

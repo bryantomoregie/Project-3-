@@ -1,4 +1,5 @@
 const renderList = (category_id) => {
+    renderSignOutHeader()
     let backToCategoriesBtn = document.createElement('button')
     backToCategoriesBtn.innerText = "Back to Categories"
     backToCategoriesBtn.addEventListener('click', () => {
