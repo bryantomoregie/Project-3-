@@ -25,7 +25,7 @@ const renderNewSwimLaneForm = (listContainer) => {
     newSwimLaneSubmit.addEventListener('click', function(e){
         e.preventDefault()
         newSwimLaneForm.remove()
-        fetch('http://127.0.0.1:3000/swim_lanes', {
+        fetch('http://localhost:3000/swim_lanes', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -36,7 +36,6 @@ const renderNewSwimLaneForm = (listContainer) => {
             return response.json()
         })
         .then(function(newSwimLane){
-
             console.log(newSwimLane)
             let laneH4 = document.createElement('h4')
             laneH4.innerText = newSwimLane.name
