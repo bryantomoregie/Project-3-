@@ -285,26 +285,28 @@ const renderNewCatForm = (categoryInput, user, catList) => {
 
 renderConditionForm = (result, catList) => {
     if(result.lists.length < 1){
-        const formTag = document.createElement("form");
+        let listContainer = document.createElement("div")
+        listContainer.className = "list-container"
+        // const formTag = document.createElement("form");
 
-        const i = document.createElement("input"); 
-        i.setAttribute('type',"text"); 
-        i.setAttribute('name',"name");
-        i.placeholder = "Type Name"
+        // const newSwimLaneName = document.createElement("input"); 
+        // newSwimLaneName.setAttribute('type',"text"); 
+        // newSwimLaneName.setAttribute('name',"name");
+        // newSwimLaneName.placeholder = "Type Name"
         
+        // const newSwimLaneBtn = document.createElement("input"); 
+        // newSwimLaneBtn.setAttribute('type',"submit");
+        // newSwimLaneBtn.setAttribute('value',"Create Swim Lane");
         
-        const s = document.createElement("input"); 
-        s.setAttribute('type',"submit");
-        s.setAttribute('value',"Create Swim Lane");
-        
-        formTag.append(i, s)
-        document.body.append(i, s)
-
-        s.addEventListener("click", function(e){
-            e.preventDefault()
-            renderSwimLaneForm(i, catList)
-        })
-        document.body.append(formTag, i, s)
+        document.body.append(listContainer)
+        renderNewSwimLaneForm(listContainer)
+        // formTag.append(newSwimLaneName, newSwimLaneBtn)
+        // document.body.append(newSwimLaneName, newSwimLaneBtn)
+        // newSwimLaneBtn.addEventListener("click", function(e){
+        //     e.preventDefault()
+        //     renderNewSwimLaneForm(listContainer)
+        // })
+        // document.body.append(formTag, newSwimLaneName, newSwimLaneBtn)
 
     }else{
         renderList(result.lists[0].category_id)

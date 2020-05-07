@@ -37,7 +37,7 @@ const renderList = (category_id) => {
                 while (document.body.firstChild) {
                     document.body.removeChild(document.body.lastChild);
                 }
-                renderAllLanes(element)
+                renderSwimLanes(element)
             })
             
             let deleteButton = document.createElement('button')
