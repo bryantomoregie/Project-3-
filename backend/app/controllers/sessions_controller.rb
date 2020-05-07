@@ -20,7 +20,9 @@ def handle_login
 end
 
 def destroy
+    byebug
     session[:user_id] = nil
+    byebug
 end
 
 end

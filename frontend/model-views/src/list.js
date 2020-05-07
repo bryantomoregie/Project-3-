@@ -2,6 +2,7 @@
 // formTag.setAttribute('method', "post")
 // formTag('action', "submit")
 const renderList = (category_id) => {
+    // window.location.reload(true)
     let catBtn = document.createElement('button')
     catBtn.innerText = "Back to Categories"
     document.body.append(catBtn)
@@ -37,6 +38,7 @@ const renderList = (category_id) => {
                 while (document.body.firstChild) {
                     document.body.removeChild(document.body.lastChild);
                 }
+                renderSignOutHeader()
                 renderSwimLanes(element)
             })
             
@@ -128,6 +130,7 @@ const renderNewListItem = (i, category_id,ulTag) => {
             while (document.body.firstChild) {
                 document.body.removeChild(document.body.lastChild);
             }
+            renderSignOutHeader()
             renderAllLanes(element)
         })
 

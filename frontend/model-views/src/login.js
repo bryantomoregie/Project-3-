@@ -4,7 +4,6 @@ let currentUser = {}
 // MOTHER FUNCTION ----------------------------------------------------
 
 const renderLoginPage = () => {
-
     let formDiv = renderForm()
     document.body.append(formDiv)
 
@@ -139,9 +138,9 @@ const renderForm = () => {
 
         modCont.append(newUser, nameInput, usernameInput, passwordInput, emailInput, subForm)
     })
-    exitBtn.addEventListener("click", function(){
-        modal.style.display = "none";
-    })
+    // exitBtn.addEventListener("click", function(){
+    //     modal.style.display = "none";
+    // })
 
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -156,8 +155,8 @@ const renderForm = () => {
 
 const submitAction = (e, signInUserInput ,signInPasswordInput) => {
     e.preventDefault()
-    console.log(signInUserInput.value)
-    console.log(signInPasswordInput.value)
+
+    console.log(document.location)
 
     fetch("http://localhost:3000/login", {
         method: "POST",
@@ -195,6 +194,7 @@ const renderHome = () => {
     while (document.body.firstChild) {
         document.body.removeChild(document.body.lastChild);
     }
+    renderSignOutHeader()
     let name = document.createElement("h1")
     name.append(currentUser.name)
     document.body.append(name)
@@ -285,6 +285,7 @@ const renderHome = () => {
             while (document.body.firstChild) {
                 document.body.removeChild(document.body.lastChild);
             }
+            renderSignOutHeader()
             if(result.lists.length < 1){
                 const formTag = document.createElement("form");
 
