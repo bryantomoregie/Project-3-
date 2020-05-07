@@ -26,7 +26,7 @@ subForm.setAttribute('value',"Create User")
 
 let userList = document.createElement("ul")
 
-subForm.addEventListener("click", function(e){
+const renderSignUpForm = (e, nameInput, usernameInput, passwordInput, emailInput) => {
     e.preventDefault()
     fetch("http://localhost:3000/users", {
         method: "POST",
@@ -40,16 +40,19 @@ subForm.addEventListener("click", function(e){
     })
     .then((response) => response.json())
     .then(function(user){
-        let userLi = document.createElement("li")
-        userLi.append(user.name)
-        userList.append(userLi)
+        console.log(user)
     })
     nameInput.value = ''
     usernameInput.value = ''
     passwordInput.value = ''
     emailInput.value = ''
-})
+}
 
+// subForm.addEventListener("click", function(e){
+//     renderSignUpForm(e, nameInput, usernameInput, passwordInput, emailInput)
+// })
+
+const renderAllUsers = () => {
 fetch("http://localhost:3000/users")
 .then((response) => response.json())
 .then(function(users){
@@ -202,64 +205,12 @@ fetch("http://localhost:3000/users")
         submitCategory.setAttribute('value',"Create Category")
 
         submitCategory.addEventListener("click", function(e){
-            e.preventDefault()
-            fetch("http://localhost:3000/categories", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    name: categoryInput.value,
-                    user_id: user.id
-                })
-            })
-            .then((response) => response.json())
-            .then(function(category){
-                let catLi = document.createElement("li")
-                catLi.append(category.name)
-                let editCat = document.createElement("button")
-                editCat.append("Edit/Save")
-                editCat.addEventListener("click", function(e){
-                    e.preventDefault()
-                    fetch(`http://localhost:3000/categories/${cat.id}`, {
-                        method: "PATCH",
-                        headers: {"Content-Type": "application/json"},
-                        body: JSON.stringify({
-                            name: catLi.innerText
-                        })
-                    })
-                })
 
-                let delCat = document.createElement("button")
-                delCat.append("Delete")
-                    delCat.addEventListener("click", function(){
-                        fetch(`http://localhost:3000/categories/${category.id}`,{
-                            method: "DELETE",
-                            headers: {"Content-Type": "application/json"},
-                            body: JSON.stringify({
-                                id: category.id
-                            })
-                        })
-                        catLi.remove()
-                        editCat.remove()
-                        delCat.remove()
-                        viewCat.remove()
-                    })
-                let viewCat = document.createElement("button")
-                viewCat.append("View Category")
-                viewCat.addEventListener("click", function(){
-                    fetch(`http://localhost:3000/categories/${category.id}`)
-                    .then((response) => response.json())
-                    .then(function(result){
-                        console.log(result)
-                        // list view ?
-                    })
-                })
-                catList.append(catLi, viewCat, editCat, delCat)
-            })
             categoryInput.value = ''
             })
             newCategory.append(categoryInput, submitCategory)
             document.body.append(newCategory)
-            })
+        })
         })
         userList.append(userLi)
     })
@@ -269,3 +220,93 @@ document.body.append(userList)
 
 newUser.append(nameInput,usernameInput,passwordInput, emailInput, subForm)
 document.body.append(newUser)
+}
+
+const renderNewCatForm = (categoryInput, user, catList) => {
+    
+    fetch("http://localhost:3000/categories", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            name: categoryInput.value,
+            user_id: user.id
+        })
+    })
+    .then((response) => response.json())
+    .then(function(category){
+        let catLi = document.createElement("li")
+        catLi.append(category.name)
+        let editCat = document.createElement("button")
+        editCat.append("Edit/Save")
+        editCat.addEventListener("click", function(e){
+            e.preventDefault()
+            fetch(`http://localhost:3000/categories/${cat.id}`, {
+                method: "PATCH",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: catLi.innerText
+                })
+            })
+        })
+
+        let delCat = document.createElement("button")
+        delCat.append("Delete")
+            delCat.addEventListener("click", function(){
+                fetch(`http://localhost:3000/categories/${category.id}`,{
+                    method: "DELETE",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        id: category.id
+                    })
+                })
+                catLi.remove()
+                editCat.remove()
+                delCat.remove()
+                viewCat.remove()
+            })
+        let viewCat = document.createElement("button")
+        viewCat.append("View Category")
+        viewCat.addEventListener("click", function(){
+            fetch(`http://localhost:3000/categories/${category.id}`)
+            .then((response) => response.json())
+            .then(function(result){
+                console.log(result)
+                while (document.body.firstChild) {
+                    document.body.removeChild(document.body.lastChild);
+                }
+                renderConditionForm(result, catList)
+            })
+        })
+        catList.append(catLi, viewCat, editCat, delCat)
+    })
+    categoryInput.value = ''
+    document.body.append(catList)
+}
+
+renderConditionForm = (result, catList) => {
+    if(result.lists.length < 1){
+        const formTag = document.createElement("form");
+
+        const i = document.createElement("input"); 
+        i.setAttribute('type',"text"); 
+        i.setAttribute('name',"name");
+        i.placeholder = "Type Name"
+        
+        
+        const s = document.createElement("input"); 
+        s.setAttribute('type',"submit");
+        s.setAttribute('value',"Create Swim Lane");
+        
+        formTag.append(i, s)
+        document.body.append(i, s)
+
+        s.addEventListener("click", function(e){
+            e.preventDefault()
+            renderSwimLaneForm(i, catList)
+        })
+        document.body.append(formTag, i, s)
+
+    }else{
+        renderList(result.lists[0].category_id)
+    }
+}

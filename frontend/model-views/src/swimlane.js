@@ -1,20 +1,18 @@
-const renderAllLanes = (element) => {
+const renderAllLanes = (the_list) => {
 
 
 
-const ulTag = document.createElement('ul')
+    const ulTag = document.createElement('ul')
 
-fetch('http://127.0.0.1:3000/swim_lanes')
-.then(function(response){
-    return response.json()
-})
-.then(function(swimlanes){
+    fetch('http://127.0.0.1:3000/swim_lanes')
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(swimlanes){
     console.log(swimlanes)
     swimlanes = swimlanes.filter(sl => {
-        return sl.list_id == element.id
+        return sl.list_id == the_list.id
     })
-    console.log(swimlanes)
-
     swimlanes.forEach(element => {
         let laneDiv = document.createElement('div')
         laneDiv.className = 'swim-lane'
@@ -83,19 +81,36 @@ fetch('http://127.0.0.1:3000/swim_lanes')
     //click submit, create new swimlane
     s.addEventListener('click', function(e){
         e.preventDefault()
-        console.log(i.value)
+        renderSwimLaneForm(i,the_list, ulTag)
+    })
+    //listen for click on button
+    //create new sl with post
+    //for each sl created, add the buttons, with their function
+    //event listener on each button
+    //unles...
+
+})
+
+}
+
+const renderSwimLaneForm = (i,list_id, ulTag) => {
+    let ulTag = document.createElement("ul")
+
         fetch('http://127.0.0.1:3000/swim_lanes', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            name: i.value
+            name: i.value,
+            list_id: list_id.id
              })
          })
          .then(function(response){
             return response.json()
         })
-        .then(
-            function(element){
+        .then(function(element){
+
+            console.log(element)
+
             let liTag = document.createElement('li')
             liTag.append(element.name)
             liTag.contentEditable = 'true'
@@ -134,21 +149,8 @@ fetch('http://127.0.0.1:3000/swim_lanes')
             })
         
         ulTag.append(liTag, editButton, deleteButton)
-        // document.body.append(ulTag)
+        document.body.append(ulTag)
       
         })
         i.value = ''
-        })
-         
-  
-
-    //listen for click on button
-    //create new sl with post
-    //for each sl created, add the buttons, with their function
-    //event listener on each button
-    //unles...
-    
-
-})
-
 }
