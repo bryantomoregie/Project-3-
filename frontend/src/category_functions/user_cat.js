@@ -287,26 +287,9 @@ renderConditionForm = (result, catList) => {
     if(result.lists.length < 1){
         let listContainer = document.createElement("div")
         listContainer.className = "list-container"
-        // const formTag = document.createElement("form");
-
-        // const newSwimLaneName = document.createElement("input"); 
-        // newSwimLaneName.setAttribute('type',"text"); 
-        // newSwimLaneName.setAttribute('name',"name");
-        // newSwimLaneName.placeholder = "Type Name"
-        
-        // const newSwimLaneBtn = document.createElement("input"); 
-        // newSwimLaneBtn.setAttribute('type',"submit");
-        // newSwimLaneBtn.setAttribute('value',"Create Swim Lane");
         
         document.body.append(listContainer)
         renderNewSwimLaneForm(listContainer)
-        // formTag.append(newSwimLaneName, newSwimLaneBtn)
-        // document.body.append(newSwimLaneName, newSwimLaneBtn)
-        // newSwimLaneBtn.addEventListener("click", function(e){
-        //     e.preventDefault()
-        //     renderNewSwimLaneForm(listContainer)
-        // })
-        // document.body.append(formTag, newSwimLaneName, newSwimLaneBtn)
 
     }else{
         renderList(result.lists[0].category_id)
