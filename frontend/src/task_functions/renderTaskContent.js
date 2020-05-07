@@ -1,4 +1,4 @@
-const renderTask = (task, tasksContainer) => {         
+const renderTaskContent = (task, tasksContainer) => {         
     let taskDiv = document.createElement('div')
     taskDiv.className = 'task-card'
 

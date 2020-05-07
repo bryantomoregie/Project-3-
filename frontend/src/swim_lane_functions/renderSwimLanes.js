@@ -1,4 +1,4 @@
-const renderAllLanes = (list) => {
+const renderSwimLanes = (list) => {
     fetch('http://localhost:3000/swim_lanes')
     .then(function(response){
         return response.json()
@@ -13,7 +13,7 @@ const renderAllLanes = (list) => {
             return swimLane.list_id == list.id
         })
         swimLanes.forEach(swimLane => {
-            renderSwimLane(swimLane, listContainer)
+            renderSwimLaneContent(swimLane, listContainer)
         });  
 
         const addSwimLaneBtn = document.createElement('button')

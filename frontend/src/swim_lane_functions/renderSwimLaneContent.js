@@ -1,4 +1,4 @@
-const renderSwimLane = (swimLane, listContainer) => {
+const renderSwimLaneContent = (swimLane, listContainer) => {
     let swimLaneDiv = document.createElement('div')
     swimLaneDiv.className = 'swim-lane'
 
@@ -37,7 +37,7 @@ const renderSwimLane = (swimLane, listContainer) => {
         })
     })
 
-    renderEachTask(swimLaneDiv, swimLane.id)
+    renderAllTasks(swimLaneDiv, swimLane.id)
     swimLaneDiv.append(titleDiv, editBtn, deleteButton,)
     
     listContainer.append(swimLaneDiv)

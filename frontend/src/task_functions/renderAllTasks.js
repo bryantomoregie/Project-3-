@@ -1,4 +1,4 @@
-const renderEachTask = (laneDiv, swimLaneId) => {
+const renderAllTasks = (laneDiv, swimLaneId) => {
     fetch("http://localhost:3000/tasks").then(function (resp) {
         return resp.json();
     }).then(function (tasks) {
@@ -6,9 +6,6 @@ const renderEachTask = (laneDiv, swimLaneId) => {
         let filteredTasks = tasks.filter(function (task){
             return task.swim_lane_id == swimLaneId
         })
-        renderTaskList(filteredTasks, laneDiv);  
+        renderSwimLaneTasks(filteredTasks, laneDiv);  
     })
 }
-
-
-
