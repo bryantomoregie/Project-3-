@@ -13,11 +13,12 @@ class ListsController < ApplicationController
     end
 
     def create
-        user = User.all[0]
+        # user = User.all[0]
+
         list = List.create({
             name: params[:name],
-            # category_id: params[:category_id]
-            category_id: user.id
+            category_id: params[:category_id]
+            # category_id: user.id
         })
         render(json:list)
     end 

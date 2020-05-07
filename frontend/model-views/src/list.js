@@ -78,6 +78,7 @@ const renderList = (category_id) => {
 
 
     document.body.append(ulTag)
+    
     const formTag = document.createElement("form");
 
     const i = document.createElement("input"); 
@@ -96,60 +97,77 @@ const renderList = (category_id) => {
 
     s.addEventListener('click', function(e){
         e.preventDefault()
-        fetch('http://127.0.0.1:3000/lists', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        renderNewListItem(i, category_id,ulTag)
+    })
+    document.body.append(formTag, i, s)
+}
+
+const renderNewListItem = (i, category_id,ulTag) => {
+    fetch('http://127.0.0.1:3000/lists', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            name: i.value
+            name: i.value,
+            category_id: category_id
         })
     })
     .then(function(response){
         return response.json()
     })
     .then(function(list){
-        let liTag = document.createElement('li')
-            liTag.innerText = list.name 
-            liTag.contentEditable = 'true'
-            let deleteButton = document.createElement('button')
-            deleteButton.append('delete')
+        console.log(list)
+    let liTag = document.createElement('li')
+        liTag.innerText = list.name 
+        liTag.contentEditable = 'true'
 
-            deleteButton.addEventListener('click', function(){
-                fetch(`http://127.0.0.1:3000/lists/${list.id}`,{
-                    method: 'DELETE',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify ({
-                        id: list.id
-                    })
-                })
-                liTag.remove()
-                deleteButton.remove()
-                editButton.remove()
-            })
+        let viewBtn = document.createElement('button')
+        viewBtn.innerText = "View"
 
-            let editButton = document.createElement('button')
-            editButton.append('edit')
-        
-            console.log(liTag.innerText)
-        
-            
-            // lists.forEach(element => { 
-            //     if (element.name == liTag.innerText)
-            editButton.addEventListener('click', function(){
-                fetch(`http://127.0.0.1:3000/lists/${list.id}`,{
-                    method: 'PATCH',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify ({
-                        name: liTag.innerText
-                    })
+        viewBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            while (document.body.firstChild) {
+                document.body.removeChild(document.body.lastChild);
+            }
+            renderAllLanes(element)
+        })
+
+        let deleteButton = document.createElement('button')
+        deleteButton.append('delete')
+
+        deleteButton.addEventListener('click', function(){
+            fetch(`http://127.0.0.1:3000/lists/${list.id}`,{
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify ({
+                    id: list.id
                 })
-            
             })
-            // })
+            liTag.remove()
+            deleteButton.remove()
+            editButton.remove()
+        })
+
+        let editButton = document.createElement('button')
+        editButton.append('edit')
+    
+        // lists.forEach(element => { 
+        //     if (element.name == liTag.innerText)
+        editButton.addEventListener('click', function(){
+            fetch(`http://127.0.0.1:3000/lists/${list.id}`,{
+                method: 'PATCH',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify ({
+                    name: liTag.innerText
+                })
+            })
         
-            ulTag.append(liTag, deleteButton, editButton)
+        })
+        // })
+    
+        ulTag.append(liTag, deleteButton, editButton)
     })
     i.value = ''
-    })
+    document.body.append(ulTag)
 
 }
 

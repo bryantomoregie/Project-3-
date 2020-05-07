@@ -13,11 +13,11 @@ class SwimLanesController < ApplicationController
     end
 
     def create
-        list = List.all[0]
+        # list = List.all[0]
         swimlane = SwimLane.create({
             name: params[:name],
-            # list_id: params[:list_id]
-            list_id: list.id
+            list_id: params[:list_id]
+            # list_id: list.id
         })
         render(json:swimlane)
     end 

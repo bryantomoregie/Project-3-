@@ -83,8 +83,61 @@ const renderForm = () => {
 
     let modal = document.getElementById("myModal");
     let exitBtn = document.getElementsByClassName("close")[0];
+
+    let modCont = document.querySelector(".modal-content")
+
     signUpBtn.addEventListener("click", function(){
         modal.style.display = "block";
+        let newUser = document.createElement("form")
+
+        let nameInput = document.createElement("input")
+        nameInput.setAttribute('type',"text")
+        nameInput.setAttribute('name',"name")
+        nameInput.placeholder = 'Your Name Here'
+
+        let usernameInput = document.createElement("input")
+        usernameInput.setAttribute('type',"text")
+        usernameInput.setAttribute('username',"username")
+        usernameInput.placeholder = 'Create a username'
+
+        let passwordInput = document.createElement("input")
+        passwordInput.setAttribute('type',"password")
+        passwordInput.setAttribute('password',"password")
+        passwordInput.placeholder = 'Create a password'
+
+        let emailInput = document.createElement("input")
+        emailInput.setAttribute('type',"text")
+        emailInput.setAttribute('email',"email")
+        emailInput.placeholder = 'Insert your email'
+
+        let subForm = document.createElement("input")
+        subForm.setAttribute('type',"submit")
+        subForm.setAttribute('value',"Create User")
+
+        subForm.addEventListener("click", function(e){
+            e.preventDefault()
+            fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: nameInput.value,
+                    username: usernameInput.value,
+                    password: passwordInput.value,
+                    email: emailInput.value
+                })
+            })
+            .then((response) => response.json())
+            .then(function(user){
+                currentUser = user
+                renderHome()
+            })
+            nameInput.value = ''
+            usernameInput.value = ''
+            passwordInput.value = ''
+            emailInput.value = ''
+        })
+
+        modCont.append(newUser, nameInput, usernameInput, passwordInput, emailInput, subForm)
     })
     exitBtn.addEventListener("click", function(){
         modal.style.display = "none";
@@ -98,7 +151,6 @@ const renderForm = () => {
 
     formDiv.append(signUpBtn)
     document.body.append(formDiv)
-
     return formDiv
 }
 
@@ -147,66 +199,82 @@ const renderHome = () => {
     name.append(currentUser.name)
     document.body.append(name)
 
-
     let editProfile = document.createElement("button")
     editProfile.append("Edit My Profile")
     editProfile.addEventListener("click", function(){
-    let newUser = document.createElement("form")
+        let newUser = document.createElement("form")
 
-    let nameInput = document.createElement("input")
-    nameInput.setAttribute('type',"text")
-    nameInput.setAttribute('name',"name")
-    nameInput.placeholder = 'Your Name Here'
+        let nameInput = document.createElement("input")
+        nameInput.setAttribute('type',"text")
+        nameInput.setAttribute('name',"name")
+        nameInput.placeholder = 'Your Name Here'
 
-    let usernameInput = document.createElement("input")
-    usernameInput.setAttribute('type',"text")
-    usernameInput.setAttribute('username',"username")
-    usernameInput.placeholder = 'Create a username'
+        let usernameInput = document.createElement("input")
+        usernameInput.setAttribute('type',"text")
+        usernameInput.setAttribute('username',"username")
+        usernameInput.placeholder = 'Create a username'
 
-    let passwordInput = document.createElement("input")
-    passwordInput.setAttribute('type',"password")
-    passwordInput.setAttribute('password',"password")
-    passwordInput.placeholder = 'Create a password'
+        let passwordInput = document.createElement("input")
+        passwordInput.setAttribute('type',"password")
+        passwordInput.setAttribute('password',"password")
+        passwordInput.placeholder = 'Create a password'
 
-    let emailInput = document.createElement("input")
-    emailInput.setAttribute('type',"text")
-    emailInput.setAttribute('email',"email")
-    emailInput.placeholder = 'Insert your email'
+        let emailInput = document.createElement("input")
+        emailInput.setAttribute('type',"text")
+        emailInput.setAttribute('email',"email")
+        emailInput.placeholder = 'Insert your email'
 
-    let subForm = document.createElement("input")
-    subForm.setAttribute('type',"submit")
-    subForm.setAttribute('value',"Update User")
+        let subForm = document.createElement("input")
+        subForm.setAttribute('type',"submit")
+        subForm.setAttribute('value',"Update User")
 
-    subForm.addEventListener("click", function(e){
-        e.preventDefault()
-        console.log(nameInput.value)
-        fetch(`http://localhost:3000/users/${currentUser.id}`,{
-            method: "PATCH",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                name: nameInput.value,
-                username: usernameInput.value,
-                password: passwordInput.value,
-                email: emailInput.value
+        subForm.addEventListener("click", function(e){
+            e.preventDefault()
+            fetch(`http://localhost:3000/users/${currentUser.id}`,{
+                method: "PATCH",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: nameInput.value,
+                    username: usernameInput.value,
+                    password: passwordInput.value,
+                    email: emailInput.value
+                })
             })
-        })
         name.innerText = nameInput.value
         nameInput.remove()
         usernameInput.remove()
         passwordInput.remove()
         emailInput.remove()
         subForm.remove()
-    })
+        })
     newUser.append(nameInput,usernameInput,passwordInput, emailInput, subForm)
     document.body.append(newUser)
-})
+    })
 
     let catList = document.createElement("ul")
+    let newCategory = document.createElement("form")
+
+    let categoryInput = document.createElement("input")
+    categoryInput.setAttribute('type',"text")
+    categoryInput.setAttribute('name',"name")
+    categoryInput.placeholder = "New Category Name"
+
+    let submitCategory = document.createElement("input")
+    submitCategory.setAttribute('type',"submit")
+    submitCategory.setAttribute('value',"Create Category")
+
+    submitCategory.addEventListener("click", function(e){
+        e.preventDefault()
+        renderNewCatForm(categoryInput, currentUser, catList)
+    })
+
+    newCategory.append(categoryInput, submitCategory)
+    document.body.append(newCategory)
+
     currentUser.categories.forEach(function(cat){
     let catLi = document.createElement("li")
     catLi.contentEditable = "true"
     catLi.append(cat.name)
-
     
     let viewCat = document.createElement("button")
     viewCat.append("View Category")
@@ -217,7 +285,30 @@ const renderHome = () => {
             while (document.body.firstChild) {
                 document.body.removeChild(document.body.lastChild);
             }
-            renderList(result.lists[0].category_id)
+            if(result.lists.length < 1){
+                const formTag = document.createElement("form");
+
+                const i = document.createElement("input"); 
+                i.setAttribute('type',"text"); 
+                i.setAttribute('name',"name");
+                i.placeholder = "Type Name"
+            
+            
+                const s = document.createElement("input"); 
+                s.setAttribute('type',"submit");
+                s.setAttribute('value',"Create List");
+            
+                formTag.append(i, s)
+                document.body.append(formTag)
+
+                s.addEventListener("click", function(e){
+                    e.preventDefault()
+                    renderNewListItem(i, catList)
+                })
+
+            }else{
+                renderList(result.lists[0].category_id)
+            }
         })
     })
 
@@ -249,7 +340,9 @@ const renderHome = () => {
         delCat.remove()
         viewCat.remove()
     })
-        catList.append(catLi,viewCat, editCat, delCat)
-        document.body.append(catList)
+    catList.append(catLi,viewCat, editCat, delCat)
+
+    
+    document.body.append(catList)
 })
 }
