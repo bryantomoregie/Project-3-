@@ -44,12 +44,13 @@ font-family: 'Oleo Script Swash Caps', cursive;
 }
 
 .category-div {
-    width: 200px;
-    float: left;
-    background-color: rgba(0, 0, 0, 0.5); 
+    width: auto;
+    padding: 16px;
+    border-radius: 4px;
+    clear: left;
+    background-color: rgba(0, 0, 0, 0.4); 
     margin: 16px;
     box-shadow: 2px 2px 8px #121212;
-    float: left;
 }
 
 .category-div-each {
@@ -296,6 +297,10 @@ font-family: 'Oleo Script Swash Caps', cursive;
     overflow: scroll;
     width: 100%;
     overflow-x: scroll;
+}
+
+.category-container {
+   float: left;
 }
 
 

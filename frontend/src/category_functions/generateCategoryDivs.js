@@ -1,4 +1,7 @@
 const generateCategoryDivs = (categoriesDiv, container) => {
+    let allListDiv = document.createElement('div')
+    allListDiv.className = "catgeory-container"
+    
     currentUser.categories.forEach(function(category) {
         let categoryDiv = document.createElement("div")
         categoryDiv.className = "category-div-each"
@@ -99,6 +102,9 @@ const generateCategoryDivs = (categoriesDiv, container) => {
         })
         categoryDiv.append(categoryH4,viewCategoryBtn, editCategoryBtn, deleteCategoryBtn)
 
-        container.append(categoryDiv)
+        allListDiv.append(categoryDiv)
+
+        
     })
+    container.append(allListDiv)
 }
