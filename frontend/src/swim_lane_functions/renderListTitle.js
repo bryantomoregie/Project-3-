@@ -1,5 +1,6 @@
-const renderListTitle = (list) => {
+const renderListTitle = (list, divdiv) => {
+
     const listTitle = document.createElement('h2')
     listTitle.innerText = list.name
-    document.body.append(listTitle)
+    divdiv.append(listTitle)
 }
