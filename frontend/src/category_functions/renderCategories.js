@@ -17,11 +17,13 @@ const renderCategories = (currentUser) => {
     let newCategory = document.createElement("form")
 
     let categoryInput = document.createElement("input")
+    categoryInput.className = "new-input"
     categoryInput.setAttribute('type',"text")
     categoryInput.setAttribute('name',"name")
     categoryInput.placeholder = "New Category Name"
 
     let submitCategory = document.createElement("input")
+    submitCategory.className = "btn"
     submitCategory.setAttribute('type',"submit")
     submitCategory.setAttribute('value',"Create Category")
 
