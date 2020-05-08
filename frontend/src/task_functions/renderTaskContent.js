@@ -1,4 +1,4 @@
-const renderTaskContent = (task, tasksContainer) => {         
+const renderTaskContent = (task, tasksContainer, swimLanes) => {         
     let taskDiv = document.createElement('div')
     taskDiv.className = 'task-card'
 
@@ -21,8 +21,17 @@ const renderTaskContent = (task, tasksContainer) => {
 
         let taskNameInput = document.createElement('input')
         taskNameInput.type = "text"
-        taskNameInput.placeholder = 'enter new name'
+        taskNameInput.placeholder = task.name
         editTaskForm.append(taskNameInput)
+
+        let swimLanesDropDown = document.createElement('select')
+        swimLanes.forEach((swimLane) => {
+            option = document.createElement("option")
+            option.value = swimLane.id
+            option.text = swimLane.name
+            swimLanesDropDown.append(option)
+        })
+        editTaskForm.append(swimLanesDropDown)
 
         let editFormBtns = document.createElement('div')
         editFormBtns.className = 'edit-form-btns'
@@ -68,10 +77,7 @@ const renderTaskContent = (task, tasksContainer) => {
 
         editTaskForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            editTaskForm.remove()
-            taskH4.innerText = taskNameInput.value
-            taskDiv.append(taskH4)
-            taskDiv.append(editTaskBtn)
+
 
             fetch(`http://localhost:3000/tasks/${task.id}`, {
                 method: "PATCH",
@@ -80,14 +86,20 @@ const renderTaskContent = (task, tasksContainer) => {
                 },
                 body: JSON.stringify({
                     name: taskH4.innerText,
+                    swim_lane_id: swimLanesDropDown.value
                 })
             })
-                .then((resp) => {
-                    return resp.json();
-                })
-                .then((task) => {
-                    console.log(task.name)
-                })
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((task) => {
+                console.log(task.name)
+            })
+
+            editTaskForm.remove()
+            taskH4.innerText = taskNameInput.value
+            taskDiv.append(taskH4)
+            taskDiv.append(editTaskBtn)
         })
 
         taskDiv.append(editTaskForm)

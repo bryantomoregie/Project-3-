@@ -1,8 +1,8 @@
-function renderSwimLaneTasks(tasks, laneDiv, swimLaneId) {
+function renderSwimLaneTasks(tasks, laneDiv, swimLaneId, swimLanes) {
     let tasksContainer = renderTasksContainer(laneDiv);
 
     tasks.forEach((task) => {
-        renderTaskContent(task, tasksContainer)
+        renderTaskContent(task, tasksContainer, swimLanes)
     })
 
     let addTask = document.createElement('button')

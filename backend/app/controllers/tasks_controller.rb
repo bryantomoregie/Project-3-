@@ -16,7 +16,7 @@ class TasksController < ApplicationController
 
     def update
         task = Task.find(params[:id])
-        task.update({name: params[:name]})
+        task.update({name: params[:name], swim_lane_id: params[:swim_lane_id]})
         render(json: task)
     end
 
