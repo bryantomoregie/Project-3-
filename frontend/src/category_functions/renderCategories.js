@@ -1,4 +1,8 @@
-const renderCategories = () => {
+const renderCategories = (currentUser) => {
+    let container = document.createElement('div')
+    container.className = "container"
+
+    
     let userCategoriesTitle = document.createElement('h2')
     userCategoriesTitle.innerText = `${currentUser.name}'s Categories`
     document.body.append(userCategoriesTitle)

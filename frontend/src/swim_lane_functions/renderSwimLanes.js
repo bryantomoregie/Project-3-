@@ -14,7 +14,7 @@ const renderSwimLanes = (list) => {
             return swimLane.list_id == list.id
         })
         swimLanes.forEach(swimLane => {
-            renderSwimLaneContent(swimLane, listContainer)
+            renderSwimLaneContent(swimLane, listContainer, list)
         });  
 
         const addSwimLaneBtn = document.createElement('button')
@@ -25,7 +25,7 @@ const renderSwimLanes = (list) => {
 
         addSwimLaneBtn.addEventListener('click', (e) => {
             e.preventDefault()
-            renderNewSwimLaneForm(listContainer)
+            renderNewSwimLaneForm(listContainer, list)
         })
     })
 }

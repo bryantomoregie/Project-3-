@@ -1,4 +1,4 @@
-const renderSwimLaneContent = (swimLane, listContainer) => {
+const renderSwimLaneContent = (swimLane, listContainer, list) => {
     let swimLaneDiv = document.createElement('div')
     swimLaneDiv.className = 'swim-lane'
 
@@ -19,7 +19,8 @@ const renderSwimLaneContent = (swimLane, listContainer) => {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify ({
-                name: laneH4.innerText
+                name: laneH4.innerText,
+                list_id: list.id
             })
         })
     })   

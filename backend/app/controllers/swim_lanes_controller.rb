@@ -7,10 +7,10 @@ class SwimLanesController < ApplicationController
         render(json:swimlanes)
     end 
 
-    def new 
-        swimlane = SwimLane.new
-        render(json:swimlane)
-    end
+    # def new 
+    #     swimlane = SwimLane.new
+    #     render(json:swimlane)
+    # end
 
     def create
         # list = List.all[0]
@@ -19,16 +19,20 @@ class SwimLanesController < ApplicationController
             list_id: params[:list_id]
             # list_id: list.id
         })
+  
         render(json:swimlane)
     end 
 
     def update 
-        list = List.all[0]
+        
         swimlane = SwimLane.find(params[:id])
         swimlane.update({
+            
             name: params[:name],
-            list_id: list.id
+            list_id: params[:list_id]
+            
         })
+        
         render(json:swimlane)
     end 
 

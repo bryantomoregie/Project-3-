@@ -12,9 +12,23 @@ const generateCategoryDivs = (categoriesDiv) => {
             fetch(`http://localhost:3000/categories/${category.id}`)
             .then((response) => response.json())
             .then(function(result){
+
                 while (document.body.firstChild) {
                     document.body.removeChild(document.body.lastChild);
                 }
+                renderHeader(currentUser)
+                let container = document.createElement('div')
+                container.className = "container"
+                document.body.append(container)
+
+                let backToCategoriesBtn = document.createElement('button')
+                backToCategoriesBtn.innerText = "Back to Categories"
+                backToCategoriesBtn.addEventListener('click', () => {
+                    renderHeader(currentUser)
+                    renderHome(currentUser)
+                })
+                container.append(backToCategoriesBtn)
+
                 let categoryTitle = document.createElement('h2')
                 categoryTitle.innerText = category.name
                 categoriesDiv.append(categoryTitle)
@@ -26,15 +40,23 @@ const generateCategoryDivs = (categoriesDiv) => {
                 })
                 categoriesDiv.append(addListBtn)
 
-                document.body.append(categoriesDiv)
+                container.append(categoriesDiv)
+
+
 
                 if(result.lists.length < 1){
-                    renderHeader()
                     let listMsg = document.createElement('p')
                     listMsg.innerText = `You have not created any ${category.name} lists yet! Click the "+ Add List" button above to get started.`
                     document.body.append(listMsg)
                 }else{
-                    renderList(result.lists[0].category_id)
+                    let backToCategoriesBtn = document.createElement('button')
+                    backToCategoriesBtn.innerText = "Back to Categories"
+                    backToCategoriesBtn.addEventListener('click', () => {
+                        renderHeader(currentUser)
+                        renderHome(currentUser)
+                    })
+
+                    renderList(result.lists[0].category_id, container)
                 }
             })
         })
@@ -59,7 +81,7 @@ const generateCategoryDivs = (categoriesDiv) => {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
-                    id: cat.id
+                    id: category.id
                 })
             })
             categoryH4.remove()

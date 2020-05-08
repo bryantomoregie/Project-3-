@@ -1,7 +1,5 @@
 const signUpSubmitEvent = (e, signInUserInput ,signInPasswordInput) => {
     e.preventDefault()
-    console.log(signInUserInput.value)
-    console.log(signInPasswordInput.value)
 
     fetch("http://localhost:3000/login", {
         method: "POST",
@@ -17,7 +15,7 @@ const signUpSubmitEvent = (e, signInUserInput ,signInPasswordInput) => {
         .then((response) => response.json())
         .then(function(user){
             currentUser = user
-            renderHome()
+            renderHome(currentUser)
     })
 
     })

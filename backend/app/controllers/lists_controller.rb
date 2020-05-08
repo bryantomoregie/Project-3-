@@ -25,10 +25,10 @@ class ListsController < ApplicationController
 
     def update 
         list = List.find(params[:id])
-        category = Category.all[0]
+        # category = Category.all[0]
         list.update({
             name: params[:name],
-            category_id: category.id
+            category_id: list.category_id
         })
         render(json:list)
     end 

@@ -1,3 +1,55 @@
+body {
+    background-image: url("https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    font-family: Helvetica;
+    color: white;
+}
+
+.app-name {
+font-family: 'Oleo Script Swash Caps', cursive;
+    float: left;
+}
+
+.user-name{
+    float:right;
+}
+
+.header-btn {
+    background-color: #333;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 4px;
+    color:white;
+    padding: 4px;
+    margin:4px;
+}
+
+.user-controls-div {
+    float:right;
+}
+
+.topnav {
+    padding: 8px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 8px #121212;
+}
+
+.container {
+    margin-top: 16px;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 8px #121212;
+}
+
+.category-div {
+    font-family: Helvetica;
+    width: 200px;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.4); 
+    margin: 16px;
+    box-shadow: 2px 2px 8px #121212;
+}
+
 .form-div {
     width: 25%;
     height: 35%;
@@ -109,3 +161,86 @@
   .oop {
       color: black;
   }
+
+
+
+.list-div {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    width: 200px;
+    margin: 32px;
+    padding: 16px;
+    box-shadow: 2px 2px 8px #121212;
+}
+
+.list-container {
+    overflow: scroll;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+
+.swim-lane {
+    font-family: helvetica;
+    font-size: 16px;
+    margin: 12px;
+    border-radius: 8px;
+    width: 260px;
+    box-shadow: 2px 2px 8px #121212;
+    background-color: rgba(0, 0, 0, 0.4);
+    float: left;
+}
+
+.swim-lane-header {
+    font-family: helvetica;
+    padding-left: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color:white;
+    box-shadow: 2px 2px 8px #1E1E1E;
+    background: #505050;
+    opacity: 0.5;
+}
+
+
+.task-card {
+    padding: 16px;
+    margin: 8px;
+    font-family: helvetica;
+    color: white;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px #1E1E1E;
+    background: #272727;
+    opacity: 0.5;
+}
+
+.add-task {
+    padding: 16px;
+    margin: 8px;
+    font-family: helvetica;
+    color:#4BB2F9;
+    border-radius: 4px;
+    width: 95.5%;
+    box-shadow: 2px 2px 8px #1E1E1E;
+    background: #1E1E1E;
+    opacity: 0.5;
+}
+
+.add-swim-lane {
+    padding: 16px;
+    margin: 8px;
+    font-family: helvetica;
+    color:#4BB2F9;
+    border-radius: 4px;
+    width: 100%;
+    box-shadow: 2px 2px 8px #1E1E1E;
+    background: #1E1E1E;
+    opacity: 0.5;
+    float: left;
+}
+
+.edit-form-btns {
+    margin-top: 16px;
+}

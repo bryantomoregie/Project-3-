@@ -1,4 +1,5 @@
-const renderNewSwimLaneForm = (listContainer) => {
+const renderNewSwimLaneForm = (listContainer, list) => {
+    console.log(list)
     let swimLaneDiv = document.createElement('div')
     swimLaneDiv.className = 'swim-lane'
 
@@ -29,7 +30,8 @@ const renderNewSwimLaneForm = (listContainer) => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            name: taskNameInput.value
+            name: taskNameInput.value,
+            list_id: list.id
             })
         })
         .then(function(response){

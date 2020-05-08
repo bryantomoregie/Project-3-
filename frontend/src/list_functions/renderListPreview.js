@@ -1,5 +1,5 @@
-const renderListPreview = (list) => {
-    listDiv = document.createElement('div')
+const renderListPreview = (list, container) => {
+    let listDiv = document.createElement('div')
     listDiv.className = "list-div"
     listDiv.append
 
@@ -14,13 +14,15 @@ const renderListPreview = (list) => {
         while (document.body.firstChild) {
             document.body.removeChild(document.body.lastChild);
         }
-        renderHeader()
+        renderHeader(currentUser)
         renderSwimLanes(list)
     })
 
     let deleteBtn = document.createElement('button')
     deleteBtn.append('delete')
+
     deleteBtn.addEventListener('click', function(){
+        console.log(list.id)
         fetch(`http://127.0.0.1:3000/lists/${list.id}`,{
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
@@ -29,6 +31,7 @@ const renderListPreview = (list) => {
             })
         })
         listDiv.remove()
+        console.log(listDiv)
     })
 
     let editButton = document.createElement('button')
@@ -44,5 +47,5 @@ const renderListPreview = (list) => {
 
     })
     listDiv.append(listH4, viewBtn, deleteBtn, editButton)
-    document.body.append(listDiv)
+    container.append(listDiv)
 }
