@@ -3,7 +3,7 @@ const renderHeader = (currentUser) => {
     let headerDiv = document.createElement("div")
     headerDiv.className = "topnav"
 
-    let appName = document.createElement("h2")
+    let appName = document.createElement("h1")
     appName.className = "app-name"
     appName.innerText = "Chrello"
     headerDiv.append(appName)
@@ -71,25 +71,25 @@ const renderEditFormPopUp = (modContent, currentUser, modal) => {
         nameInput.className = "username-input"
         nameInput.setAttribute('type',"text")
         nameInput.setAttribute('name',"name")
-        nameInput.placeholder = 'Your Name Here'
+        nameInput.placeholder = currentUser.name
 
         let usernameInput = document.createElement("input")
         usernameInput.className = "username-input"
         usernameInput.setAttribute('type',"text")
         usernameInput.setAttribute('username',"username")
-        usernameInput.placeholder = 'Create a username'
+        usernameInput.placeholder = currentUser.username
 
         let passwordInput = document.createElement("input")
         passwordInput.className = "password-input"
         passwordInput.setAttribute('type',"password")
         passwordInput.setAttribute('password',"password")
-        passwordInput.placeholder = 'Create a password'
+        passwordInput.placeholder = 'New password'
 
         let emailInput = document.createElement("input")
         emailInput.className = "username-input"
         emailInput.setAttribute('type',"text")
         emailInput.setAttribute('email',"email")
-        emailInput.placeholder = 'Insert your email'
+        emailInput.placeholder = currentUser.email
 
         let subForm = document.createElement("input")
         subForm.className = "sign-up"

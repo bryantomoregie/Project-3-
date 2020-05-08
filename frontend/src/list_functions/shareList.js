@@ -4,6 +4,7 @@ const shareList = (list, listdiv) => {
 
 
     let shareListBtn = document.createElement('button')
+    shareListBtn.className = 'btn'
     shareListBtn.innerText = "Share List"
     shareListBtn.addEventListener('click', () => {
         shareListBtn.remove()

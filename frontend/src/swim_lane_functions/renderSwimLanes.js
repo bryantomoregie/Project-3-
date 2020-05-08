@@ -10,7 +10,7 @@ const renderSwimLanes = (list) => {
         document.body.append(contDiv)
 
         let listDiv = document.createElement("div")
-        listDiv.className = "category-div"
+        listDiv.className = "title-div"
         renderListTitle(list, listDiv)
         shareList(list, listDiv)
 
@@ -27,14 +27,14 @@ const renderSwimLanes = (list) => {
             renderSwimLaneContent(swimLane, listContainer, list)
         });  
 
-        let swimLaneDiv = document.createElement("div")
-        // swimLaneDiv.className = "category-div"
-
         const addSwimLaneBtn = document.createElement('button')
         addSwimLaneBtn.innerText = "+ Add Swim Lane"
         addSwimLaneBtn.className = "add-swim-lane"
 
-        swimLaneDiv.append(addSwimLaneBtn)
+        contDiv.append(addSwimLaneBtn)
+
+        let swimLaneDiv = document.createElement("div")
+        // swimLaneDiv.className = "category-div"
 
         contDiv.append(swimLaneDiv)
 

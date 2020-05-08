@@ -15,6 +15,7 @@ const addTaskAction = (tasksContainer, swimLaneId) => {
     addBtns.className = 'edit-form-btns'
 
     let cancelTaskBtn = document.createElement('button')
+    cancelTaskBtn.className = "task-btn"
     cancelTaskBtn.innerText = 'Cancel'
     addBtns.append(cancelTaskBtn)
 
@@ -23,6 +24,7 @@ const addTaskAction = (tasksContainer, swimLaneId) => {
     })
 
     let saveTaskBtn = document.createElement('input')
+    saveTaskBtn.className = "task-btn"
     saveTaskBtn.type = 'submit'
     saveTaskBtn.value = 'Save'
     addBtns.append(saveTaskBtn)
