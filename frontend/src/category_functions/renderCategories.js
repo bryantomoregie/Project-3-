@@ -7,7 +7,6 @@ const renderCategories = (currentUser) => {
     userInfo.className = "title-div"
     container.append(userInfo)
     
-    
     let userCategoriesTitle = document.createElement('h2')
     userCategoriesTitle.innerText = `${currentUser.name}'s Categories`
     // document.body.append(userCategoriesTitle)
@@ -16,7 +15,7 @@ const renderCategories = (currentUser) => {
 
     let categoriesDiv = document.createElement('div')
     categoriesDiv.className = "title-div"
-    // container.append(categoriesDiv)
+    container.append(categoriesDiv)
 
     
     let newCategory = document.createElement("form")

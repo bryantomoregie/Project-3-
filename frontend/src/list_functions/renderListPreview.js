@@ -1,8 +1,9 @@
 const renderListPreview = (list, container) => {
     console.log(container)
+    let listDivContainer = document.createElement('div')
+    container.append(listDivContainer)
     let listDiv = document.createElement('div')
     listDiv.className = "list-div"
-    listDiv.append
 
     let listH4 = document.createElement('h4')
     listH4.contentEditable = 'true'
@@ -49,5 +50,5 @@ const renderListPreview = (list, container) => {
 
     })
     listDiv.append(listH4, viewBtn, editButton, deleteBtn)
-    container.append(listDiv)
+    listDivContainer.append(listDiv)
 }

@@ -65,10 +65,10 @@ h2 {
     width: 20%;
     padding: 16px;
     border-radius: 4px;
-    clear: left;
     background-color: rgba(0, 0, 0, 0.4); 
     margin: 16px;
     box-shadow: 2px 2px 8px #121212;
+    float: left;
 }
 
 .title-div {
@@ -324,6 +324,7 @@ h2 {
     margin: 32px;
     padding: 16px;
     box-shadow: 2px 2px 8px #121212;
+    float: left;
 }
 
 .list-container {
@@ -331,11 +332,6 @@ h2 {
     width: 100%;
     overflow-x: scroll;
 }
-
-.category-container {
-   float: left;
-}
-
 
 .swim-lane {
     font-family: helvetica;

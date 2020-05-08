@@ -38,18 +38,6 @@ const renderSwimLanes = (list) => {
             renderSwimLaneContent(swimLane, listContainer, list)
         });  
 
-
-        // const addSwimLaneBtn = document.createElement('button')
-        // addSwimLaneBtn.innerText = "+ Add Swim Lane"
-        // addSwimLaneBtn.className = "add-swim-lane"
-
-        // contDiv.append(addSwimLaneBtn)
-
-        // let swimLaneDiv = document.createElement("div")
-        // swimLaneDiv.className = "category-div"
-
-        // contDiv.append(swimLaneDiv)
-
         addSwimLaneBtn.addEventListener('click', (e) => {
             e.preventDefault()
             renderNewSwimLaneForm(listContainer, list)
