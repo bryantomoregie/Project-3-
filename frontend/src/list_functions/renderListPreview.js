@@ -9,6 +9,7 @@ const renderListPreview = (list, container) => {
     listH4.innerText = list.name 
 
     let viewBtn = document.createElement('button')
+    viewBtn.className = "view-btn"
     viewBtn.innerText = "View"
     viewBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -20,7 +21,8 @@ const renderListPreview = (list, container) => {
     })
 
     let deleteBtn = document.createElement('button')
-    deleteBtn.append('delete')
+    deleteBtn.className = "delete-btn"
+    deleteBtn.append('Delete')
 
     deleteBtn.addEventListener('click', function(){
         fetch(`http://127.0.0.1:3000/lists/${list.id}`,{
@@ -34,7 +36,8 @@ const renderListPreview = (list, container) => {
     })
 
     let editButton = document.createElement('button')
-    editButton.append('edit')
+    editButton.className = "save-btn"
+    editButton.append('Save')
     editButton.addEventListener('click', function(){
     fetch(`http://127.0.0.1:3000/lists/${list.id}`,{
         method: 'PATCH',
@@ -45,6 +48,6 @@ const renderListPreview = (list, container) => {
     })
 
     })
-    listDiv.append(listH4, viewBtn, deleteBtn, editButton)
+    listDiv.append(listH4, viewBtn, editButton, deleteBtn)
     container.append(listDiv)
 }

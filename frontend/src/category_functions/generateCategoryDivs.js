@@ -10,6 +10,7 @@ const generateCategoryDivs = (categoriesDiv, container) => {
         // container.append()
 
         let viewCategoryBtn = document.createElement("button")
+        viewCategoryBtn.className = "view-btn"
         viewCategoryBtn.append("View Category")
         viewCategoryBtn.addEventListener("click", function(){
             fetch(`http://localhost:3000/categories/${category.id}`)
@@ -25,6 +26,7 @@ const generateCategoryDivs = (categoriesDiv, container) => {
                 document.body.append(container)
 
                 let backToCategoriesBtn = document.createElement('button')
+                backToCategoriesBtn.className = "back-btn"
                 backToCategoriesBtn.innerText = "Back to Categories"
                 backToCategoriesBtn.addEventListener('click', () => {
                     renderHeader(currentUser)
@@ -37,6 +39,7 @@ const generateCategoryDivs = (categoriesDiv, container) => {
                 categoriesDiv.append(categoryTitle)
 
                 let addListBtn = document.createElement('button')
+                addListBtn.className = "view-btn"
                 addListBtn.innerText = "+ Add List"
                 addListBtn.addEventListener('click', () => {
                     renderNewListForm(category, container)
@@ -65,6 +68,7 @@ const generateCategoryDivs = (categoriesDiv, container) => {
         })
 
         let editCategoryBtn = document.createElement("button")
+        editCategoryBtn.className = "save-btn"
         editCategoryBtn.append("Save")
         editCategoryBtn.addEventListener("click", function(e){
             e.preventDefault()
@@ -77,6 +81,7 @@ const generateCategoryDivs = (categoriesDiv, container) => {
             })
         })
         let deleteCategoryBtn = document.createElement("button")
+        deleteCategoryBtn.className = "delete-btn"
         deleteCategoryBtn.append("Delete")
         deleteCategoryBtn.addEventListener("click", function(e){
             e.preventDefault()
