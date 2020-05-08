@@ -13,7 +13,7 @@ const renderNewCategoryForm = (categoryInput, user, catList, container) => {
         let catLi = document.createElement("h4")
         catLi.append(category.name)
         let editCat = document.createElement("button")
-        editCat.append("Edit/Save")
+        editCat.append("Save")
         editCat.addEventListener("click", function(e){
             e.preventDefault()
             fetch(`http://localhost:3000/categories/${cat.id}`, {

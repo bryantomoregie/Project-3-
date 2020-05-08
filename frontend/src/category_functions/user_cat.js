@@ -88,7 +88,7 @@ fetch("http://localhost:3000/users")
                 })
 
                 let editCat = document.createElement("button")
-                editCat.append("Edit/Save")
+                editCat.append("Save")
                 editCat.addEventListener("click", function(e){
                     e.preventDefault()
                     fetch(`http://localhost:3000/categories/${cat.id}`, {
@@ -187,7 +187,7 @@ const renderNewCatForm = (categoryInput, user, catList) => {
         catLi.contentEditable = "true"
         catLi.append(category.name)
         let editCat = document.createElement("button")
-        editCat.append("Edit/Save")
+        editCat.append("Save")
         editCat.addEventListener("click", function(e){
             e.preventDefault()
             fetch(`http://localhost:3000/categories/${cat.id}`, {

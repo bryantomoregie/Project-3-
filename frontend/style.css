@@ -44,7 +44,6 @@ font-family: 'Oleo Script Swash Caps', cursive;
 }
 
 .category-div {
-    font-family: Helvetica;
     width: 200px;
     float: left;
     background-color: rgba(0, 0, 0, 0.5); 
@@ -53,8 +52,8 @@ font-family: 'Oleo Script Swash Caps', cursive;
 }
 
 .category-div-each {
-    font-family: Helvetica;
-    width: 200px;
+    width: 260px;
+    padding: 16px;
     clear: left;
     background-color: rgba(0, 0, 0, 0.4); 
     margin: 16px;
@@ -184,7 +183,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
 .list-div {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 4px;
-    width: 200px;
+    width: 260px;
     margin: 32px;
     padding: 16px;
     box-shadow: 2px 2px 8px #121212;

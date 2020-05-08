@@ -65,7 +65,7 @@ const generateCategoryDivs = (categoriesDiv, container) => {
         })
 
         let editCategoryBtn = document.createElement("button")
-        editCategoryBtn.append("Edit/Save")
+        editCategoryBtn.append("Save")
         editCategoryBtn.addEventListener("click", function(e){
             e.preventDefault()
             fetch(`http://localhost:3000/categories/${category.id}`, {
