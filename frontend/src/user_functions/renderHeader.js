@@ -38,7 +38,6 @@ const renderHeader = (currentUser) => {
     headerBtns.append(editProfileBtn)
 
     window.onclick = function(event) {
-        console.log(modal)
         if (event.target == modal) {
             while (modContent.firstChild) {
                 modContent.removeChild(modContent.lastChild);

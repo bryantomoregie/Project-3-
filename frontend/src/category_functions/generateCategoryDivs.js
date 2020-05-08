@@ -1,10 +1,13 @@
-const generateCategoryDivs = (categoriesDiv) => {
+const generateCategoryDivs = (categoriesDiv, container) => {
     currentUser.categories.forEach(function(category) {
         let categoryDiv = document.createElement("div")
+        categoryDiv.className = "category-div-each"
         let categoryH4 = document.createElement("h4")
         categoryH4.contentEditable = "true"
         categoryH4.innerText = category.name
         categoryDiv.append(categoryH4)
+
+        // container.append()
 
         let viewCategoryBtn = document.createElement("button")
         viewCategoryBtn.append("View Category")
@@ -36,7 +39,7 @@ const generateCategoryDivs = (categoriesDiv) => {
                 let addListBtn = document.createElement('button')
                 addListBtn.innerText = "+ Add List"
                 addListBtn.addEventListener('click', () => {
-                    renderNewListForm()
+                    renderNewListForm(category, container)
                 })
                 categoriesDiv.append(addListBtn)
 
@@ -90,6 +93,7 @@ const generateCategoryDivs = (categoriesDiv) => {
             viewCategoryBtn.remove()
         })
         categoryDiv.append(categoryH4,viewCategoryBtn, editCategoryBtn, deleteCategoryBtn)
-        document.body.append(categoryDiv)
+
+        container.append(categoryDiv)
     })
 }
