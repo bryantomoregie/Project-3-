@@ -41,7 +41,7 @@ const newUserSubmitAction = (modal, modCont) => {
         .then((response) => response.json())
         .then(function(user){
             currentUser = user
-            renderHome()
+            renderHome(currentUser)
         })
         nameInput.value = ''
         usernameInput.value = ''
@@ -50,4 +50,14 @@ const newUserSubmitAction = (modal, modCont) => {
     })
 
     modCont.append(newUser, nameInput, usernameInput, passwordInput, emailInput, newUserSubmit)
+    
+    window.onclick = function(event) {
+        console.log(modal)
+        if (event.target == modal) {
+            while (modCont.firstChild) {
+                modCont.removeChild(modCont.lastChild);
+            }
+        modal.style.display = "none";
+        }
+    }
 }
