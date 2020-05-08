@@ -15,6 +15,7 @@ const renderNewSwimLaneForm = (listContainer, list) => {
     taskNameInput.placeholder = "Type Name"
     
     const newSwimLaneSubmit = document.createElement("input"); 
+    newSwimLaneSubmit.className = "task-btn"
     newSwimLaneSubmit.setAttribute('type',"submit");
     newSwimLaneSubmit.setAttribute('value',"Create Swim Lane");
     
@@ -47,6 +48,7 @@ const renderNewSwimLaneForm = (listContainer, list) => {
 
             //User can edit the swimLane name
             let editButton = document.createElement('button')
+            editButton.className = "task-btn"
             editButton.innerText = 'edit'
             swimLaneDiv.append(editButton)
 
@@ -61,6 +63,7 @@ const renderNewSwimLaneForm = (listContainer, list) => {
             })   
             //User can delete the swimlane  
             let deleteButton = document.createElement('button')
+            deleteButton.className = "task-btn"
             deleteButton.append('delete')
             swimLaneDiv.append(deleteButton)
 
@@ -75,10 +78,15 @@ const renderNewSwimLaneForm = (listContainer, list) => {
                 })
             })
 
-            // let addTask = document.createElement('button')
-            // addTask.innerText = "+ Add Task"
-            // addTask.className = 'add-task'
-            // swimLaneDiv.append(addTask)
+            let addTask = document.createElement('button')
+            addTask.innerText = "+ Add Task"
+            addTask.className = 'add-task'
+            swimLaneDiv.append(addTask)
+
+            addTask.addEventListener("click", () => {
+                // console.log(tasks)
+                addTaskAction(tasksContainer, swimLaneId)
+            })
 
         // document.body.append(ulTag)
         })
