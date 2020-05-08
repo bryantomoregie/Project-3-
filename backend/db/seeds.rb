@@ -83,7 +83,7 @@ lecturesPresented = SwimLane.create({name: 'Presented', list_id: lectures.id})
 # Swim Lanes / Josh < Teaching < Labs
 labsQA = SwimLane.create({name: 'Quality Check', list_id: labs.id})
 labsDeploy = SwimLane.create({name: 'Deploy', list_id: labs.id})
-labsReview= SwimLane.create({name: 'Review With Class', list_id: labs.id})
+labsReview = SwimLane.create({name: 'Review With Class', list_id: labs.id})
 
 # Swim Lanes / Josh < Entertainment < LOTR
 lotrBacklog = SwimLane.create({name: 'Backlog', list_id: lotr.id})
@@ -106,16 +106,79 @@ beard = SwimLane.create({name: 'To Do', list_id: beardHealth.id})
 
 # ------------------------------------------------------------------------------------
 
+#Josh < Teaching < Lecture < Lecture Backlog < Task 
 l1 = Task.create({name: 'The DOM', swim_lane_id: lecturesBacklog.id})
 l2 = Task.create({name: 'JavaScripts', swim_lane_id: lecturesBacklog.id})
 l3 = Task.create({name: 'DOM Events', swim_lane_id: lecturesBacklog.id})
 l4 = Task.create({name: 'Asynchronous JavaScript', swim_lane_id: lecturesBacklog.id})
+
+#Josh < Teaching < Lecture < Lecture Prepare < Task 
 l5 = Task.create({name: 'Communication with the Server', swim_lane_id: lecturesPrepare.id})
+
+#Josh < Teaching < Lecture < Lecture Review < Task 
 l6 = Task.create({name: 'Rails API', swim_lane_id: lecturesReview.id})
 l7 = Task.create({name: 'Callback Functions', swim_lane_id: lecturesReview.id})
 l8 = Task.create({name: 'JavaScript Classes', swim_lane_id: lecturesReview.id})
+
+#Josh < Teaching < Lecture < Lecture Presented < Task 
 l9 = Task.create({name: 'Validations', swim_lane_id: lecturesPresented.id})
 l10 = Task.create({name: 'Sessions & Cookies', swim_lane_id: lecturesPresented.id})
-l11 = Task.create({name: 'Rails Forms', swim_lane_id: lecturesThisWeek.id})
 l12 = Task.create({name: 'Rails Routing', swim_lane_id: lecturesPresented.id})
 l13 = Task.create({name: 'Rails', swim_lane_id: lecturesPresented.id})
+
+#Josh < Teaching < Lecture < Lecture This Week < Task 
+l11 = Task.create({name: 'Rails Forms', swim_lane_id: lecturesThisWeek.id})
+l12 = Task.create({name: 'Understanding Fetch Request', swim_lane_id: lecturesThisWeek.id})
+
+
+#Josh < Teaching < Labs < LabsQA < Task
+l21 = Task.create({name: 'create README', swim_lane_id: labsQA.id})
+l14 = Task.create({name: 'JavaScripts', swim_lane_id: labsQA.id})
+l15 = Task.create({name: 'DOM Events', swim_lane_id: labsQA.id})
+l16 = Task.create({name: 'Asynchronous JavaScript', swim_lane_id: labsQA.id})
+
+#Josh < Teaching < Labs < labsDeploy < Task 
+l17 = Task.create({name: 'Communication with the Server', swim_lane_id: labsDeploy.id})
+
+#Josh < Teaching < Labs < Labs Review < Task 
+l18 = Task.create({name: 'Review with Steven', swim_lane_id: labsReview.id})
+l19 = Task.create({name: 'Post in SLack', swim_lane_id: labsReview.id})
+
+#Josh < Teaching < Lecture < lotrBacklog < Task 
+l22 = Task.create({name: 'Review all movies', swim_lane_id: lotrBacklog.id})
+l23 = Task.create({name: 'Review all books', swim_lane_id: lotrBacklog.id})
+l24 = Task.create({name: 'Check in with book club', swim_lane_id: lotrBacklog.id})
+
+#Josh < Teaching < Lecture < lotrInProgress < Task 
+l25 = Task.create({name: 'Write fan 4th book', swim_lane_id: lotrInProgress.id})
+l26 = Task.create({name: 'create index file', swim_lane_id: lotrInProgress.id})
+l27 = Task.create({name: 'edit buttons in app', swim_lane_id: lotrInProgress.id})
+
+#Josh < Teaching < Lecture < lotrMoveToBacklog < Task 
+l29 = Task.create({name: 'app has vr functionality', swim_lane_id: lotrMoveToBacklog.id})
+l30 = Task.create({name: 'users can play app simultaneously', swim_lane_id: lotrMoveToBacklog.id})
+
+#Josh < Teaching < Lecture < zeldaBacklog < Task 
+l31 = Task.create({name: 'Review all movies', swim_lane_id: zeldaBacklog.id})
+l32 = Task.create({name: 'Review all books', swim_lane_id: zeldaBacklog.id})
+l33 = Task.create({name: 'Check in with book club', swim_lane_id: zeldaBacklog.id})
+
+#Josh < Teaching < Lecture < zeldaInProgress < Task 
+l34 = Task.create({name: 'Write fan 4th book', swim_lane_id: zeldaInProgress.id})
+l35 = Task.create({name: 'create index file', swim_lane_id: zeldaInProgress.id})
+l36 = Task.create({name: 'edit buttons in app', swim_lane_id: zeldaInProgress.id})
+
+#Josh < Teaching < Lecture < zeldaCompleted < Task 
+l37 = Task.create({name: 'app has vr functionality', swim_lane_id: zeldaCompleted.id})
+l38 = Task.create({name: 'users can play app simultaneously', swim_lane_id: zeldaCompleted.id})
+
+
+
+
+
+
+
+
+
+
+
