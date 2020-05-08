@@ -1,7 +1,6 @@
 body {
     background-image: url("https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-repeat: no-repeat;
-    background-size: stretch;
     font-family: 'Quicksand', sans-serif;
     color: white;
 }
@@ -9,6 +8,10 @@ body {
 .app-name {
 font-family: 'Oleo Script Swash Caps', cursive;
     float: left;
+}
+
+h2 {
+    margin-top: -4px;
 }
 
 .user-name{
@@ -34,6 +37,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 2px 2px 8px #121212;
+    border-radius: 4px;
 }
 
 .container {
@@ -41,6 +45,10 @@ font-family: 'Oleo Script Swash Caps', cursive;
     padding: 8px;
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 2px 2px 8px #121212;
+    border-radius: 4px;
+    height: 550px;
+    overflow-y: scroll;
+    overflow-x:scroll;
 }
 
 .category-div {
@@ -54,7 +62,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
 }
 
 .category-div-each {
-    width: 25%;
+    width: 20%;
     padding: 16px;
     border-radius: 4px;
     clear: left;
@@ -253,7 +261,32 @@ font-family: 'Oleo Script Swash Caps', cursive;
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 4px;
-    width: 14%;
+    width: 10%;
+}
+
+.task-btn {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: white;
+    color:white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.title-btn {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: white;
+    color:white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    width: 10%;
+    float:right;
 }
 
 .back-btn {
@@ -287,8 +320,8 @@ font-family: 'Oleo Script Swash Caps', cursive;
 .list-div {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 4px;
-    width: 25%;
-    margin: 16px;
+    width: 20%;
+    margin: 32px;
     padding: 16px;
     box-shadow: 2px 2px 8px #121212;
 }
@@ -308,7 +341,8 @@ font-family: 'Oleo Script Swash Caps', cursive;
     font-family: helvetica;
     font-size: 16px;
     margin: 12px;
-    border-radius: 8px;
+    padding: 8px;
+    border-radius: 4px;
     width: 260px;
     box-shadow: 2px 2px 8px #121212;
     background-color: rgba(0, 0, 0, 0.5);
@@ -321,35 +355,34 @@ font-family: 'Oleo Script Swash Caps', cursive;
     font-size: 16px;
     font-weight: bold;
     color:white;
-    box-shadow: 2px 2px 8px #1E1E1E;
-    background: #505050;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
+.tasks-div {
+    margin-top: 16px;
+}
 
 .task-card {
     padding: 16px;
-    margin: 8px;
+    margin-bottom: 8px;
     font-family: helvetica;
     color: white;
     border-style: solid;
     border-width: thin;
     border-radius: 4px;
     box-shadow: 2px 2px 8px #1E1E1E;
-    background: #272727;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.0);
 }
+
 
 .add-task {
     padding: 16px;
-    margin: 8px;
     font-family: helvetica;
-    color:#4BB2F9;
+    color:#0c71e0;
     border-radius: 4px;
-    width: 95.5%;
+    width: 100%;
     box-shadow: 2px 2px 8px #1E1E1E;
-    background: #1E1E1E;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 .add-swim-lane {
@@ -360,9 +393,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
     border-radius: 4px;
     width: 100%;
     box-shadow: 2px 2px 8px #1E1E1E;
-    background: #1E1E1E;
-    opacity: 0.5;
-    float: left;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .edit-form-btns {
