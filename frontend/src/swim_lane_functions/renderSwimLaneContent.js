@@ -11,7 +11,8 @@ const renderSwimLaneContent = (swimLane, listContainer, list) => {
     titleDiv.append(laneH4)
     
     let editBtn = document.createElement('button')
-    editBtn.append('edit')
+    editBtn.className = "save-btn"
+    editBtn.append('Save')
 
     //User can edit the swimLane name
     editBtn.addEventListener('click', function(){
@@ -26,7 +27,8 @@ const renderSwimLaneContent = (swimLane, listContainer, list) => {
     })   
     //User can delete the swimlane  
     let deleteButton = document.createElement('button')
-    deleteButton.append('delete')
+    deleteButton.className = "delete-btn"
+    deleteButton.append('Delete')
     deleteButton.addEventListener('click', function(){
         swimLaneDiv.remove()
         fetch(`http://127.0.0.1:3000/swim_lanes/${swimLane.id}`, {

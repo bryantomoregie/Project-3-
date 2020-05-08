@@ -7,7 +7,7 @@ const renderTaskContent = (task, tasksContainer) => {
     taskDiv.append(taskH4)
 
     let editTaskBtn = document.createElement('button')
-    editTaskBtn.className = "edit-task-btn"
+    editTaskBtn.className = "save-btn"
     editTaskBtn.innerText = 'Edit'
     taskDiv.append(editTaskBtn)
 
@@ -28,6 +28,7 @@ const renderTaskContent = (task, tasksContainer) => {
         editFormBtns.className = 'edit-form-btns'
 
         let cancelBtn = document.createElement('button')
+        cancelBtn.className = "task-btn"
         cancelBtn.innerText = "Cancel"
         editFormBtns.append(cancelBtn)
         cancelBtn.addEventListener('click', (e) => {
@@ -38,6 +39,7 @@ const renderTaskContent = (task, tasksContainer) => {
         })
 
         let deleteBtn = document.createElement('button')
+        deleteBtn.className = "task-btn"
         deleteBtn.innerText = "Delete"
         deleteBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -57,6 +59,7 @@ const renderTaskContent = (task, tasksContainer) => {
 
 
         let updateTaskBtn = document.createElement('input')
+        updateTaskBtn.className = "task-btn"
         updateTaskBtn.type = "submit"
         updateTaskBtn.value = "Update"
         editFormBtns.append(updateTaskBtn)
