@@ -11,7 +11,7 @@ function renderSwimLaneTasks(tasks, laneDiv, swimLaneId) {
     laneDiv.append(addTask)
 
     addTask.addEventListener("click", () => {
-        console.log(tasks)
+        // console.log(tasks)
         addTaskAction(tasksContainer, swimLaneId)
     })
 }

@@ -75,10 +75,10 @@ const renderNewSwimLaneForm = (listContainer, list) => {
                 })
             })
 
-            let addTask = document.createElement('button')
-            addTask.innerText = "+ Add Task"
-            addTask.className = 'add-task'
-            swimLaneDiv.append(addTask)
+            // let addTask = document.createElement('button')
+            // addTask.innerText = "+ Add Task"
+            // addTask.className = 'add-task'
+            // swimLaneDiv.append(addTask)
 
         // document.body.append(ulTag)
         })

@@ -1,4 +1,4 @@
-const renderNewCategoryForm = (categoryInput, user, catList) => {
+const renderNewCategoryForm = (categoryInput, user, catList, container) => {
     
     fetch("http://localhost:3000/categories", {
         method: "POST",
@@ -10,7 +10,7 @@ const renderNewCategoryForm = (categoryInput, user, catList) => {
     })
     .then((response) => response.json())
     .then(function(category){
-        let catLi = document.createElement("li")
+        let catLi = document.createElement("h4")
         catLi.append(category.name)
         let editCat = document.createElement("button")
         editCat.append("Edit/Save")
@@ -27,35 +27,39 @@ const renderNewCategoryForm = (categoryInput, user, catList) => {
 
         let delCat = document.createElement("button")
         delCat.append("Delete")
-            delCat.addEventListener("click", function(){
-                fetch(`http://localhost:3000/categories/${category.id}`,{
-                    method: "DELETE",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({
-                        id: category.id
-                    })
+        delCat.addEventListener("click", function(){
+            fetch(`http://localhost:3000/categories/${category.id}`,{
+                method: "DELETE",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    id: category.id
                 })
-                catLi.remove()
-                editCat.remove()
-                delCat.remove()
-                viewCat.remove()
             })
+            catLi.remove()
+            editCat.remove()
+            delCat.remove()
+            viewCat.remove()
+        })
         let viewCat = document.createElement("button")
         viewCat.append("View Category")
         viewCat.addEventListener("click", function(){
             fetch(`http://localhost:3000/categories/${category.id}`)
             .then((response) => response.json())
             .then(function(result){
-                console.log(result)
                 while (document.body.firstChild) {
                     document.body.removeChild(document.body.lastChild);
                 }
+                renderHeader(currentUser)
+                // renderNewListForm(category, catList)
+                generateCategoryDivs(catList, container)
+                // renderList(result.id, catList)
             })
         })
         catList.append(catLi, viewCat, editCat, delCat)
+        // container.append(catList)
     })
     categoryInput.value = ''
-    document.body.append(catList)
+    // document.body.append(catList)
 }
 
 renderConditionForm = (result, catList) => {
