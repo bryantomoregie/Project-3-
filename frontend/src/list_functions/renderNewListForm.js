@@ -1,4 +1,4 @@
-const renderNewListForm = () => {
+const renderNewListForm = (category_id, listDiv) => {
     const newListForm = document.createElement("form");
 
     const newListNameInput = document.createElement("input"); 
@@ -16,6 +16,9 @@ const renderNewListForm = () => {
     newListSubmit.addEventListener('click', function(e){
         e.preventDefault()
         renderNewListItem(newListNameInput, category_id,listDiv)
+        newListForm.remove()
+        newListNameInput.remove()
+        newListSubmit.remove()
     })
     document.body.append(newListForm, newListNameInput, newListSubmit)
 }

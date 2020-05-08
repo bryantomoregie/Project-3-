@@ -50,6 +50,15 @@ font-family: 'Oleo Script Swash Caps', cursive;
     box-shadow: 2px 2px 8px #121212;
 }
 
+.category-div-each {
+    font-family: Helvetica;
+    width: 200px;
+    clear: left;
+    background-color: rgba(0, 0, 0, 0.4); 
+    margin: 16px;
+    box-shadow: 2px 2px 8px #121212;
+}
+
 .form-div {
     width: 25%;
     height: 35%;
@@ -142,6 +151,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    text-align: center;
   }
 
 .close {
