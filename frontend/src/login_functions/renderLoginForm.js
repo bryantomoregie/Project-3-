@@ -32,15 +32,18 @@ const renderLoginForm = () => {
     signInPasswordInput.placeholder = 'Enter your password'
     formDiv.append(signInPasswordInput)
 
+    let passVisaDiv = document.createElement('div')
+
     let passVisa = document.createElement("i")
     passVisa.id = "pass-visa"
     passVisa.className = "fa fa-eye"
-    formDiv.append(passVisa)
+    passVisaDiv.append(passVisa)
 
     let passVisaLabel = document.createElement("label")
     passVisaLabel.for = "pass-visa"
     passVisaLabel.append(" Show Password")
-    formDiv.append(passVisaLabel)
+    passVisaDiv.append(passVisaLabel)
+    formDiv.append(passVisaDiv)
 
     let loginSubmit = document.createElement("button")
     loginSubmit.className = "login-submit"

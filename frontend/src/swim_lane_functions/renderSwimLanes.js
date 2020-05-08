@@ -5,6 +5,7 @@ const renderSwimLanes = (list) => {
     })
     .then(function(swimLanes){
         renderListTitle(list)
+        shareList(list)
         let listContainer = document.createElement('div')
         listContainer.className = 'list-container'
         document.body.append(listContainer)
