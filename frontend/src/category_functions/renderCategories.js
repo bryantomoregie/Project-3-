@@ -3,11 +3,16 @@ const renderCategories = (currentUser) => {
     container.className = "container"
     // document.body.append(container)
 
+    let userInfo = document.createElement("div")
+    userInfo.className = "category-div-each"
+    container.append(userInfo)
+    
     
     let userCategoriesTitle = document.createElement('h2')
     userCategoriesTitle.innerText = `${currentUser.name}'s Categories`
     // document.body.append(userCategoriesTitle)
-    container.append(userCategoriesTitle)
+
+    userInfo.append(userCategoriesTitle)
 
     let categoriesDiv = document.createElement('div')
     categoriesDiv.className = "category-div-each"
@@ -15,6 +20,7 @@ const renderCategories = (currentUser) => {
 
     
     let newCategory = document.createElement("form")
+
 
     let categoryInput = document.createElement("input")
     categoryInput.className = "new-input"
@@ -34,7 +40,7 @@ const renderCategories = (currentUser) => {
 
     newCategory.append(categoryInput, submitCategory)
 
-    container.append(newCategory)
+    userInfo.append(newCategory)
 
     // let floatDiv = document.createElement("div")
     // floatDiv.className = "category-div-each"

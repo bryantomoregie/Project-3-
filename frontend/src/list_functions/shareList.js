@@ -1,6 +1,7 @@
-const shareList = (list) => {
+const shareList = (list, listdiv) => {
     let shareListDiv = document.createElement('div')
-        document.body.append(shareListDiv)
+    listdiv.append(shareListDiv)
+
 
     let shareListBtn = document.createElement('button')
     shareListBtn.innerText = "Share List"
@@ -30,5 +31,5 @@ const shareList = (list) => {
         shareListForm.append(shareListSubmit)
         shareListDiv.append(shareListForm)
     })
-    document.body.append(shareListBtn)
+    listdiv.append(shareListBtn)
 }

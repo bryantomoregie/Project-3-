@@ -68,26 +68,31 @@ const renderEditFormPopUp = (modContent, currentUser, modal) => {
         let newUser = document.createElement("form")
 
         let nameInput = document.createElement("input")
+        nameInput.className = "username-input"
         nameInput.setAttribute('type',"text")
         nameInput.setAttribute('name',"name")
         nameInput.placeholder = 'Your Name Here'
 
         let usernameInput = document.createElement("input")
+        usernameInput.className = "username-input"
         usernameInput.setAttribute('type',"text")
         usernameInput.setAttribute('username',"username")
         usernameInput.placeholder = 'Create a username'
 
         let passwordInput = document.createElement("input")
+        passwordInput.className = "password-input"
         passwordInput.setAttribute('type',"password")
         passwordInput.setAttribute('password',"password")
         passwordInput.placeholder = 'Create a password'
 
         let emailInput = document.createElement("input")
+        emailInput.className = "username-input"
         emailInput.setAttribute('type',"text")
         emailInput.setAttribute('email',"email")
         emailInput.placeholder = 'Insert your email'
 
         let subForm = document.createElement("input")
+        subForm.className = "sign-up"
         subForm.setAttribute('type',"submit")
         subForm.setAttribute('value',"Update User")
 
