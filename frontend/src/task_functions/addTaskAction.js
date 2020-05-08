@@ -1,4 +1,5 @@
-const addTaskAction = () => {
+const addTaskAction = (tasksContainer, swimLaneId) => {
+    console.log(swimLaneId)
     let newTaskDiv = document.createElement('div')
     newTaskDiv.className = 'task-card'
 
@@ -6,7 +7,7 @@ const addTaskAction = () => {
 
     let taskNameInput = document.createElement('input')
     taskNameInput.type = 'text'
-    taskNameInput.value = "Task title..."
+    taskNameInput.placeholder = "Task title..."
     taskNameInput.className = 'task-name-input'
     newTaskForm.append(taskNameInput)
 
@@ -58,7 +59,8 @@ const addTaskAction = () => {
                 "Content-Type": "application/json"
                 },
             body: JSON.stringify({
-                name: taskNameInput.value
+                name: taskNameInput.value,
+                swim_lane_id: swimLaneId
             })
         })
         .then((resp) => {

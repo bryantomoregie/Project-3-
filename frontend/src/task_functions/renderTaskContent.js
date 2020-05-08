@@ -21,7 +21,7 @@ const renderTaskContent = (task, tasksContainer) => {
 
         let taskNameInput = document.createElement('input')
         taskNameInput.type = "text"
-        taskNameInput.value = (task.name)
+        taskNameInput.placeholder = 'enter new name'
         editTaskForm.append(taskNameInput)
 
         let editFormBtns = document.createElement('div')
@@ -83,7 +83,7 @@ const renderTaskContent = (task, tasksContainer) => {
                     return resp.json();
                 })
                 .then((task) => {
-                    console.log(task)
+                    console.log(task.name)
                 })
         })
 

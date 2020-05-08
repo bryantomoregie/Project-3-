@@ -10,7 +10,7 @@ class TasksController < ApplicationController
     end
 
     def create 
-        task = Task.create({name: params[:name], swim_lane_id: SwimLane.all[0].id })
+        task = Task.create({name: params[:name], swim_lane_id: params[:swim_lane_id] })
         render(json: task)
     end
 
