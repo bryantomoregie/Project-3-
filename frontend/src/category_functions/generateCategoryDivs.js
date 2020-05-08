@@ -32,14 +32,14 @@ const generateCategoryDivs = (categoriesDiv, container) => {
                     renderHeader(currentUser)
                     renderHome(currentUser)
                 })
-                container.append(backToCategoriesBtn)
+                categoriesDiv.append(backToCategoriesBtn)
 
                 let categoryTitle = document.createElement('h2')
                 categoryTitle.innerText = category.name
                 categoriesDiv.append(categoryTitle)
 
                 let addListBtn = document.createElement('button')
-                addListBtn.className = "view-btn"
+                addListBtn.className = "add-list-btn"
                 addListBtn.innerText = "+ Add List"
                 addListBtn.addEventListener('click', () => {
                     renderNewListForm(category, container)

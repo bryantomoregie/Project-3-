@@ -4,7 +4,7 @@ const renderCategories = (currentUser) => {
     // document.body.append(container)
 
     let userInfo = document.createElement("div")
-    userInfo.className = "category-div-each"
+    userInfo.className = "title-div"
     container.append(userInfo)
     
     
@@ -15,7 +15,7 @@ const renderCategories = (currentUser) => {
     userInfo.append(userCategoriesTitle)
 
     let categoriesDiv = document.createElement('div')
-    categoriesDiv.className = "category-div-each"
+    categoriesDiv.className = "title-div"
     // container.append(categoriesDiv)
 
     
