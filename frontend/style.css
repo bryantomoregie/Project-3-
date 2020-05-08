@@ -292,7 +292,6 @@ h2 {
 .back-btn {
     background-color: rgba(0, 0, 0, 0);
     float: right;
-    margin-top: 70px;
     border-color: white;
     color:white;
     padding-top: 8px;
@@ -300,7 +299,6 @@ h2 {
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 4px;
-    width: 20%;
 }
 
 .new-input {
