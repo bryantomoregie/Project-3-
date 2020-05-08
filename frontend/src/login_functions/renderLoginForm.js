@@ -53,7 +53,7 @@ const renderLoginForm = () => {
     loginSubmit.append(iconSignIn)
 
     passVisa.addEventListener("click", function(e){
-        visabilityEvent(e)
+        passwordVisibilityEvent(e)
     })
 
     loginSubmit.addEventListener("click", function(e){
@@ -75,11 +75,6 @@ const renderLoginForm = () => {
         let modContent = document.createElement("div")
         modContent.className = "modal-content"
         modal.append(modContent)
-    
-        let modalClose = document.createElement('span')
-        modalClose.innerHTML = "&times;"
-        modalClose.className = "close"
-        modContent.append(modalClose)
 
         document.body.append(modal)
         newUserSubmitAction(modal, modContent)

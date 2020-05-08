@@ -17,7 +17,7 @@ const signUpSubmitEvent = (e, signInUserInput ,signInPasswordInput) => {
         .then((response) => response.json())
         .then(function(user){
             currentUser = user
-            renderHome()
+            renderHome(currentUser)
     })
 
     })

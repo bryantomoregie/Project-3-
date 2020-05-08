@@ -1,10 +1,12 @@
-const renderHome = () => {
+const renderHome = (currentUser) => {
     while (document.body.firstChild) {
         document.body.removeChild(document.body.lastChild);
     }
-    renderSignOutHeader()
 
+    renderSignOutHeader(currentUser)
+    console.log(currentUser)
     let name = document.createElement("h1")
+    name.className = "user-name"
     name.append(currentUser.name)
     document.body.append(name)
 
