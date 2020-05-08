@@ -1,6 +1,8 @@
 body {
     background-image: url("https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-    font-family: Helvetica;
+    background-repeat: no-repeat;
+    background-size: stretch;
+    font-family: 'Quicksand', sans-serif;
     color: white;
 }
 
@@ -30,14 +32,14 @@ font-family: 'Oleo Script Swash Caps', cursive;
 .topnav {
     padding: 8px;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 2px 2px 8px #121212;
 }
 
 .container {
     margin-top: 16px;
     padding: 8px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 2px 2px 8px #121212;
 }
 
@@ -45,29 +47,32 @@ font-family: 'Oleo Script Swash Caps', cursive;
     font-family: Helvetica;
     width: 200px;
     float: left;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.5); 
     margin: 16px;
     box-shadow: 2px 2px 8px #121212;
 }
 
 .form-div {
     width: 25%;
-    height: 35%;
+    height:50%;
     overflow: auto;
     margin: auto;
     position: absolute;
     top: 0; left:0; bottom: 0; right: 0;
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 8px #121212;
+    padding: 24px;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .username-input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
+    margin-bottom: 16px;
+    margin-top: 16x;
     display: inline-block;
     border: 1px solid#ccc;
     border-radius: 4px;
@@ -79,13 +84,15 @@ font-family: 'Oleo Script Swash Caps', cursive;
 }
 
 .username-input:focus {
-    border: 3px solid orange;
+    border: 3px solid #0c71e0;
 }
 
 .password-input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
+    margin-top: 16px;
+    margin-bottom: 16px;
     display: inline-block;
     border: 1px solid#ccc;
     border-radius: 4px;
@@ -97,15 +104,15 @@ font-family: 'Oleo Script Swash Caps', cursive;
 }
 
 .password-input:focus {
-    border: 3px solid orange;
+    border: 3px solid #0c71e0;
 }
 
 .login-submit {
     width: 50%;
-    background-color: orange;
+    background-color: #0c71e0;
     color: white;
     padding: 14px 20px;
-    margin: 8px;
+    margin: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -113,7 +120,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
 
 .sign-up {
     width: 50%;
-    background-color: orange;
+    background-color: #0c71e0;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -133,7 +140,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
     height: 100%;
     overflow: auto;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.5);
   }
   
   .modal-content {
@@ -165,7 +172,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
 
 
 .list-div {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     width: 200px;
     margin: 32px;
@@ -187,7 +194,7 @@ font-family: 'Oleo Script Swash Caps', cursive;
     border-radius: 8px;
     width: 260px;
     box-shadow: 2px 2px 8px #121212;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     float: left;
 }
 
