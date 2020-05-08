@@ -39,13 +39,13 @@ const renderSwimLanes = (list) => {
         });  
 
 
-        const addSwimLaneBtn = document.createElement('button')
-        addSwimLaneBtn.innerText = "+ Add Swim Lane"
-        addSwimLaneBtn.className = "add-swim-lane"
+        // const addSwimLaneBtn = document.createElement('button')
+        // addSwimLaneBtn.innerText = "+ Add Swim Lane"
+        // addSwimLaneBtn.className = "add-swim-lane"
 
-        contDiv.append(addSwimLaneBtn)
+        // contDiv.append(addSwimLaneBtn)
 
-        let swimLaneDiv = document.createElement("div")
+        // let swimLaneDiv = document.createElement("div")
         // swimLaneDiv.className = "category-div"
 
         // contDiv.append(swimLaneDiv)
