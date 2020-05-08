@@ -13,8 +13,6 @@ const renderList = (category_id) => {
         return response.json()
     })
     .then(function(lists){
-        console.log(lists)
-        console.log(category_id)
         lists = lists.filter(list => {
             return list.category_id == category_id
         })

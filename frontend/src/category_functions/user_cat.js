@@ -235,6 +235,7 @@ const renderNewCatForm = (categoryInput, user, catList) => {
     .then((response) => response.json())
     .then(function(category){
         let catLi = document.createElement("li")
+        catLi.contentEditable = "true"
         catLi.append(category.name)
         let editCat = document.createElement("button")
         editCat.append("Edit/Save")

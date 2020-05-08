@@ -110,14 +110,16 @@ const renderNewCatForm = (categoryInput, user, catList) => {
 }
 
 renderConditionForm = (result, catList) => {
+   
     if(result.lists.length < 1){
         let listContainer = document.createElement("div")
         listContainer.className = "list-container"
-        
+        console.log(result)
         document.body.append(listContainer)
-        renderNewSwimLaneForm(listContainer)
+        renderNewSwimLaneForm(listContainer, result)
 
     }else{
+        console.log(result)
         renderList(result.lists[0].category_id)
     }
 }

@@ -1,4 +1,4 @@
-function renderSwimLaneTasks(tasks, laneDiv) {
+function renderSwimLaneTasks(tasks, laneDiv, swimLaneId) {
     let tasksContainer = renderTasksContainer(laneDiv);
 
     tasks.forEach((task) => {
@@ -11,6 +11,7 @@ function renderSwimLaneTasks(tasks, laneDiv) {
     laneDiv.append(addTask)
 
     addTask.addEventListener("click", () => {
-        addTaskAction()
+        console.log(tasks)
+        addTaskAction(tasksContainer, swimLaneId)
     })
 }
