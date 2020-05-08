@@ -1,4 +1,4 @@
-const renderSignOutHeader = () => {
+const renderHeader = () => {
 
     let headerDiv = document.createElement("div")
     headerDiv.className = "topnav"

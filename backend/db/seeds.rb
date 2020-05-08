@@ -7,7 +7,7 @@ Task.destroy_all
 
 # Users
 josh = User.create({name: "Joshua Miles", username: "j", password: '123', email: 'linkmiles@noreply.com'})
-steven = User.create({name: "Steven Nguyen", username: "LinkWithSheild", password: '123', email: 'stevenshle@noreply.com'})
+steven = User.create({name: "Steven Nguyen", username: "LinkWithShield", password: '123', email: 'stevenshield@noreply.com'})
 
 
 # ------------------------------------------------------------------------------------

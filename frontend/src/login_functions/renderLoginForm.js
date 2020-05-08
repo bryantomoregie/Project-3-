@@ -32,15 +32,18 @@ const renderLoginForm = () => {
     signInPasswordInput.placeholder = 'Enter your password'
     formDiv.append(signInPasswordInput)
 
+    let passVisaDiv = document.createElement('div')
+
     let passVisa = document.createElement("i")
     passVisa.id = "pass-visa"
     passVisa.className = "fa fa-eye"
-    formDiv.append(passVisa)
+    passVisaDiv.append(passVisa)
 
     let passVisaLabel = document.createElement("label")
     passVisaLabel.for = "pass-visa"
     passVisaLabel.append(" Show Password")
-    formDiv.append(passVisaLabel)
+    passVisaDiv.append(passVisaLabel)
+    formDiv.append(passVisaDiv)
 
     let loginSubmit = document.createElement("button")
     loginSubmit.className = "login-submit"
@@ -57,7 +60,7 @@ const renderLoginForm = () => {
     })
 
     loginSubmit.addEventListener("click", function(e){
-        signUpSubmitEvent(e, signInUserInput, signInPasswordInput)
+        loginSubmitAction(e, signInUserInput, signInPasswordInput)
     })
 
     let signUpBtn = document.createElement("button")
@@ -68,21 +71,7 @@ const renderLoginForm = () => {
     signUpBtn.append(iconSignUp)
 
     signUpBtn.addEventListener("click", function(){
-        let modal = document.createElement("div")
-        modal.className = "modal"
-        modal.id = "myModal"
-    
-        let modContent = document.createElement("div")
-        modContent.className = "modal-content"
-        modal.append(modContent)
-    
-        let modalClose = document.createElement('span')
-        modalClose.innerHTML = "&times;"
-        modalClose.className = "close"
-        modContent.append(modalClose)
-
-        document.body.append(modal)
-        newUserSubmitAction(modal, modContent)
+        signUpBtnAction()
     })
 
     window.onclick = function(event, modal) {
@@ -90,35 +79,7 @@ const renderLoginForm = () => {
         modal.style.display = "none";
         }
     }
-
     formDiv.append(signUpBtn)
     document.body.append(formDiv)
     return formDiv
-}
-
-const submitAction = (e, signInUserInput ,signInPasswordInput) => {
-    e.preventDefault()
-
-    console.log(document.location)
-
-    fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            username: signInUserInput.value,
-            password: signInPasswordInput.value,
-        })
-    })
-    .then((response) => response.json())
-    .then(function(user){
-        fetch(`http://localhost:3000/users/${user.id}`)
-        .then((response) => response.json())
-        .then(function(user){
-            currentUser = user
-            renderHome()
-    })
-
-    })
-    signInUserInput.value = ''
-    signInPasswordInput.value = ''
 }
